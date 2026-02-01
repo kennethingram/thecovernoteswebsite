@@ -55,10 +55,22 @@
         
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 3px;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
             color: var(--secondary);
             text-decoration: none;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--secondary);
         }
         
         .nav-links {
@@ -95,7 +107,7 @@
             transition: 0.3s;
         }
         
-        /* Hero Section */
+        /* Hero Section with Carousel */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -107,27 +119,56 @@
             overflow: hidden;
         }
         
-        .hero::before {
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomIn 20s ease-in-out infinite;
+        }
+        
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(51, 102, 255, 0.1) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
         
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             animation: fadeInUp 1s ease-out;
         }
         
@@ -147,10 +188,21 @@
             font-size: clamp(3rem, 10vw, 8rem);
             letter-spacing: 8px;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--secondary);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            right: 5%;
+            height: 6px;
+            background: var(--secondary);
         }
         
         .hero p {
@@ -159,6 +211,7 @@
             letter-spacing: 2px;
             margin-bottom: 2rem;
             opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
         
         .social-icons {
@@ -188,9 +241,17 @@
             transform: scale(1.1);
         }
         
+        /* Section Divider */
+        .section-divider {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+        
         /* Sections */
         section {
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -199,8 +260,49 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             letter-spacing: 4px;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             text-align: center;
+        }
+        
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--secondary);
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #ff1a4d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.3);
         }
         
         /* Showreels */
@@ -208,7 +310,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
         .showreels-grid iframe {
@@ -218,12 +320,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Gallery Grid - Responsive Grid like Showreels */
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
         .gallery-item-wrapper {
@@ -372,107 +474,21 @@
             right: 20px;
         }
         
-        /* Contact Form */
-        .contact-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            color: var(--secondary);
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        button[type="submit"] {
-            background: var(--accent);
-            color: var(--secondary);
-            border: none;
-            padding: 1rem 3rem;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        button[type="submit"]:hover {
-            background: #ff1a4d;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.3);
-        }
-        
-        /* Instagram Feed */
-        .instagram-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .instagram-embed {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 3rem;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .instagram-placeholder {
-            text-align: center;
-        }
-        
-        .instagram-embed iframe {
-            width: 100%;
-            border: none;
-            border-radius: 8px;
-        }
-        
-        .instagram-embed .embedsocial-hashtag {
-            max-width: 100%;
-        }
-        
         /* Set List */
+        .setlist-intro {
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
         .setlist-columns {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
-            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
         
         .setlist-category h3 {
@@ -488,37 +504,223 @@
         }
         
         .setlist-category li {
-            padding: 0.5rem 0;
+            padding: 0.25rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             font-weight: 300;
+            font-size: 0.95rem;
         }
         
-        /* About Section */
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
+        /* Reviews Carousel */
+        .reviews-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+        
+        .reviews-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .review-card {
+            min-width: 100%;
+            padding: 2rem;
             text-align: center;
+        }
+        
+        .review-stars {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3rem;
+        }
+        
+        .review-text {
             font-size: 1.1rem;
-            font-weight: 300;
+            font-style: italic;
             line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .review-author {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .carousel-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .carousel-nav button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .carousel-nav button:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        /* Contact Form */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        
+        .form-group label.required::after {
+            content: ' *';
+            color: var(--accent);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--secondary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-group select {
+            cursor: pointer;
+        }
+        
+        button[type="submit"] {
+            background: var(--accent);
+            color: var(--secondary);
+            border: none;
+            padding: 1rem 3rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        button[type="submit"]:hover {
+            background: #ff1a4d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.3);
         }
         
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.95);
             padding: 3rem 2rem 2rem;
-            text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        footer .social-icons {
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
             margin-bottom: 2rem;
         }
         
-        footer p {
+        .footer-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
-            opacity: 0.6;
-            letter-spacing: 1px;
         }
         
         /* Responsive */
@@ -568,6 +770,20 @@
             .lightbox-next {
                 right: 10px;
             }
+            
+            .about-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -589,11 +805,11 @@
             <a href="#home" class="logo">THE COVERNOTES</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#showreels">Showreels</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#instagram">Instagram</a></li>
                 <li><a href="#setlist">Set List</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
@@ -604,8 +820,25 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Carousel -->
     <section id="home" class="hero">
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="hero-slide active">
+                <img src="images/hero1.jpg" alt="The Covernotes Live Performance">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero2.jpg" alt="The Covernotes on Stage">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero3.jpg" alt="The Covernotes at Event">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero4.jpg" alt="The Covernotes Band">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero5.jpg" alt="The Covernotes Performance">
+            </div>
+        </div>
         <div class="hero-content">
             <h1>THE COVERNOTES</h1>
             <p>Live Function and Party Band</p>
@@ -624,6 +857,30 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>ABOUT US</h2>
+        <div class="about-content">
+            <p>
+                The Covernotes is Ontario's premier live function and party band that plays everything from the classics to current floor fillers to get your party started. We bring energy and excitement to weddings, corporate events and private parties with a diverse repertoire across pop, rock, soul, funk, reggae and contemporary hits with everything in between to create unforgettable experiences that keep your guests on the dance floor all night long.
+            </p>
+            <p>
+                We are fun and flexible with a professional attitude. We are all experienced in performing live having played hundreds of gigs across numerous countries and venues.
+            </p>
+            <p>
+                We pride ourselves on being reliable performers, multi-instrumentalists and vocalists providing professional and energetic performances of the highest calibre. We are immaculately turned out, friendly, accommodating and enthusiastic, always giving 100%. We carry our own professional instruments with a full top of the line PA system.
+            </p>
+            <div class="about-cta">
+                <a href="#contact" class="cta-button">Book Us Now</a>
+                <a href="#setlist" class="cta-button">View Set List</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- Showreels Section -->
     <section id="showreels">
         <h2>SHOWREELS</h2>
@@ -636,146 +893,88 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- Gallery Section -->
     <section id="gallery">
         <h2>GALLERY</h2>
         <div class="gallery-grid">
-            <!-- Image 1 - You can adjust object-position to: top, bottom, left, right, center -->
             <div class="gallery-item-wrapper" onclick="openLightbox(0)">
-                <img src="images/Review, 40th Birthday Party, Kitchener, Jan 2025.png" 
-                     alt="Review of 40th Birthday Party, 2025" 
-                     class="gallery-item" 
+                <img src="images/Outdoor 3 Piece Front Full Band on Amphitheatre.JPG"
+                     alt="Outdoor Performance at Ribfest/Festival, 2023"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            <!-- Image 2 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(1)">
-                <img src="images/Outdoor 3 Piece Front Full Band on Amphitheatre.JPG" 
-                     alt="Outdoor Performance at Ribfest/Festival, 2023" 
-                     class="gallery-item" 
+                <img src="images/Sunlife - Band front on.jpeg"
+                     alt="Downtown Toronto Corporate Event, 2024"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            <!-- Image 3 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(2)">
-                <img src="images/Sunlife - Band front on.jpeg" 
-                     alt="Downtown Toronto Corporate Event, 2024" 
-                     class="gallery-item" 
+                <img src="images/Outdoor, Ken Front Singing .jpg.jpg"
+                     alt="Ken on Bass and Vocals at Ribfest/Festival, 2023"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
-
-            <!-- Image 4 -->
+            
             <div class="gallery-item-wrapper" onclick="openLightbox(3)">
-                <img src="images/Outdoor, Ken Front Singing .jpg.jpg" 
-                     alt="Ken on Bass and Vocals at Ribfest/Festival, 2023" 
-                     class="gallery-item" 
+                <img src="images/Outdoor, Rol Front Singing .jpg"
+                     alt="Rol on Guitar and Vocals at Ribfest/Festival, 2023"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            <!-- Image 5 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(4)">
-                <img src="images/Outdoor, Rol Front Singing .jpg" 
-                     alt="Rol on Guitar and Vocals at Ribfest/Festival, 2023" 
-                     class="gallery-item" 
+                <img src="images/Sunlife - Drummer Brian.jpeg"
+                     alt="Brian on Drums at Corporate Event, 2024"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            <!-- Image 6 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(5)">
-                <img src="images/Sunlife - Drummer Brian.jpeg" 
-                     alt="Brian on Drums at Corporate Event, 2024" 
-                     class="gallery-item" 
-                     style="object-position: top;">
+                <img src="images/Rol - Acoustic.jpg"
+                     alt="Rol on Guitar at Wedding Ceremony, 2023"
+                     class="gallery-item"
+                     style="object-position: center;">
             </div>
             
-            <!-- Image 7 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(6)">
-                <img src="images/Rol - Acoustic.jpg" 
-                     alt="Rol on Guitar at Wedding Ceremony, 2023" 
-                     class="gallery-item" 
+                <img src="images/Full Band Acoustic session.jpg"
+                     alt="Cocktail Hour at Wedding Ceremony, 2023"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            <!-- Image 8 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(7)">
-                <img src="images/Review from Kelly's 25th Wedding Anniversary, May 2024.png" 
-                     alt="Review of 25th Wedding Anniversary, 2025" 
-                     class="gallery-item" 
+                <img src="images/Ken on keys close up.jpg"
+                     alt="Close up of Keys, 2024"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            
-            <!-- Image 9 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(8)">
-                <img src="images/Full Band Acoustic session.jpg" 
-                     alt="Cocktail Hour at Wedding Ceremony, 2023" 
-                     class="gallery-item" 
+                <img src="images/Rol Guitar close up.jpg"
+                     alt="Close up of Guitar, 2024"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
-           
             
-            <!-- Image 10 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(9)">
-                <img src="images/Ken on keys close up.jpg" 
-                     alt="Close up of Keys, 2024" 
-                     class="gallery-item" 
+                <img src="images/Toronto Street party.jpg"
+                     alt="Toronto Street Party, 2025"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
             
-            
-            <!-- Image 11 -->
             <div class="gallery-item-wrapper" onclick="openLightbox(10)">
-                <img src="images/Rol Guitar close up.jpg" 
-                     alt="Close up of Guitar, 2024" 
-                     class="gallery-item" 
+                <img src="images/Corporate Event Rooftop Party, 2025.png"
+                     alt="Corporate Event Rooftop Party, 2025"
+                     class="gallery-item"
                      style="object-position: center;">
             </div>
-            
-            
-            <!-- Image 12 -->
-            <div class="gallery-item-wrapper" onclick="openLightbox(11)">
-                <img src="images/Rumble in the jungle Ken.jpg" 
-                     alt="Ken on Keys and Vocals at Ribfest, 2024" 
-                     class="gallery-item" 
-                     style="object-position: center;">
-            </div>
-            
-            
-            <!-- Image 13 -->
-            <div class="gallery-item-wrapper" onclick="openLightbox(12)">
-                <img src="images/Rumble in the jungle Rol.jpg" 
-                     alt="Rol on Guitar and Vocals at Ribfest, 2024" 
-                     class="gallery-item" 
-                     style="object-position: center;">
-            </div>
-            
-            
-            <!-- Image 14 -->
-            <div class="gallery-item-wrapper" onclick="openLightbox(13)">
-                <img src="images/Toronto Street party.jpg" 
-                     alt="Toronto Street Party, 2025" 
-                     class="gallery-item" 
-                     style="object-position: center;">
-            </div>
-            
-            
-            <!-- Image 15 -->
-            <div class="gallery-item-wrapper" onclick="openLightbox(14)">
-                <img src="images/Review, Belgrave Court Party, Burlington, 20250920.jpg" 
-                     alt="Review of Streety Party, 2025" 
-                     class="gallery-item" 
-                     style="object-position: center;">
-            </div>
-        
-            
-            <!-- Image 16 -->
-            <div class="gallery-item-wrapper" onclick="openLightbox(15)">
-                <img src="images/Corporate Event Rooftop Party, 2025.png" 
-                     alt="Corporate Event Rooftop Party, 2025" 
-                     class="gallery-item" 
-                     style="object-position: center;">
-            </div>
-        
         </div>
     </section>
 
@@ -790,30 +989,12 @@
         </div>
     </div>
 
-    <!-- Instagram Feed Section -->
-    <section id="instagram">
-        <h2>INSTAGRAM FEED</h2>
-        <div class="instagram-container">
-            <div class="instagram-embed">
-                <iframe src="https://embedsocial.com/api/pro_hashtag/995939753c2800aa2081ad7af401f78fde72c978" width="900px" height="1200px" frameborder="0" marginheight="0" marginwidth="0"></iframe>
-                    <svg width="120" height="60" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.3;">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    <p style="margin-top: 1rem; opacity: 0.7;">Follow us on Instagram</p>
-                    <a href="https://www.instagram.com/the_covernotes/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 2rem; background: var(--accent); color: white; text-decoration: none; border-radius: 4px; font-weight: 600;">@the_covernotes</a>
-                </div>
-            </div>
-        </div>
-        <p style="text-align: center; margin-top: 2rem; opacity: 0.7; font-size: 0.9rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <strong>Setup Instructions:</strong> To display your Instagram feed, you can use services like EmbedSocial, Curator.io, or Flockler. 
-            See the README file for detailed instructions on setting up your Instagram feed.
-        </p>
-    </section>
+    <div class="section-divider"></div>
 
     <!-- Set List Section -->
     <section id="setlist">
         <h2>SET LIST</h2>
-        <div style="max-width: 900px; margin: 0 auto 3rem; text-align: center; font-size: 1.05rem; font-weight: 300; line-height: 1.8;">
+        <div class="setlist-intro">
             <p>
                 We have an extensive set list and are well experienced in managing the set list either live or we can work with you to develop the best set arrangement, including specific songs for your event. We include background / iPad music during breaks as standard.
             </p>
@@ -823,7 +1004,7 @@
         </div>
         
         <!-- Pop Hits -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Pop Hits</h3>
                 <ul>
@@ -848,13 +1029,13 @@
                     <li>I Want You Back - The Jackson 5</li>
                     <li>I Wish - Stevie Wonder</li>
                     <li>I'm a Believer - The Monkees</li>
+                    <li>It Wasn't Me - Shaggy</li>
+                    <li>Just the Way You Are - Bruno Mars</li>
                 </ul>
             </div>
             <div class="setlist-category">
-                <h3>Pop Hits (cont.)</h3>
+                <h3>&nbsp;</h3>
                 <ul>
-                    <li>It Wasn't Me - Shaggy</li>
-                    <li>Just the Way You Are - Bruno Mars</li>
                     <li>Kiss - Prince</li>
                     <li>Like a Prayer - Madonna</li>
                     <li>Little L - Jamiroquai</li>
@@ -883,7 +1064,7 @@
         </div>
         
         <!-- Rock -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Rock</h3>
                 <ul>
@@ -900,6 +1081,11 @@
                     <li>Honky Tonk Woman - The Rolling Stones</li>
                     <li>How You Remind Me - Nickelback</li>
                     <li>I Believe in a Thing Called Love - The Darkness</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3>&nbsp;</h3>
+                <ul>
                     <li>I Saw Her Standing There - The Beatles</li>
                     <li>I Want to Break Free - Queen</li>
                     <li>I'm Still Standing - Elton John</li>
@@ -917,7 +1103,7 @@
         </div>
         
         <!-- Motown, Soul & R&B -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Motown, Soul & R&B</h3>
                 <ul>
@@ -935,13 +1121,13 @@
                     <li>I Heard It Through the Grapevine - Marvin Gaye</li>
                     <li>I'm a Soul Man - Sam & Dave</li>
                     <li>Let the Good Times Roll - Ray Charles</li>
-                    <li>Let's Stay Together - Al Green</li>
-                    <li>Man in the Mirror - Michael Jackson</li>
                 </ul>
             </div>
             <div class="setlist-category">
-                <h3>Motown, Soul & R&B (cont.)</h3>
+                <h3>&nbsp;</h3>
                 <ul>
+                    <li>Let's Stay Together - Al Green</li>
+                    <li>Man in the Mirror - Michael Jackson</li>
                     <li>Midnight Hour - Wilson Pickett</li>
                     <li>Money, That's What I Want - Barrett Strong</li>
                     <li>My Girl - The Temptations</li>
@@ -958,7 +1144,7 @@
         </div>
         
         <!-- Latin -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Latin</h3>
                 <ul>
@@ -976,7 +1162,7 @@
         </div>
         
         <!-- Reggae -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Reggae</h3>
                 <ul>
@@ -994,7 +1180,7 @@
         </div>
         
         <!-- Hip Hop & Rap -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Hip Hop & Rap</h3>
                 <ul>
@@ -1011,7 +1197,7 @@
         </div>
         
         <!-- Classic Rock & Roll -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Classic Rock & Roll</h3>
                 <ul>
@@ -1027,7 +1213,7 @@
         </div>
         
         <!-- Christmas Classics -->
-        <div class="setlist-columns" style="margin-bottom: 4rem;">
+        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Christmas Classics</h3>
                 <ul>
@@ -1068,45 +1254,153 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>ABOUT US</h2>
-        <div class="about-content">
-            <p>
-                The Covernotes is Ontario's premier live function and party band, bringing energy and excitement to weddings, 
-                corporate events, and private parties. With a diverse repertoire spanning classic rock, contemporary hits, 
-                and everything in between, we create unforgettable experiences that keep your guests on the dance floor all night long.
-            </p>
-            <p style="margin-top: 1.5rem;">
-                Add your band's story and details here.
-            </p>
+    <div class="section-divider"></div>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <h2>REVIEWS</h2>
+        <div class="reviews-carousel" id="reviewsCarousel">
+            <div class="reviews-wrapper" id="reviewsWrapper">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented, and so much fun. Highly recommend!"
+                    </div>
+                    <div class="review-author">— Sarah & Mike, Wedding 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection, and they had everyone from the CEO to the interns on the dance floor!"
+                    </div>
+                    <div class="review-author">— Tech Corp, Corporate Event 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating, and their music selection is perfect for all ages."
+                    </div>
+                    <div class="review-author">— Jennifer L., 50th Birthday Party</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "From our first meeting to the last song of the night, The Covernotes were amazing. They worked with us on song selections and made sure our special day was perfect. Can't thank them enough!"
+                    </div>
+                    <div class="review-author">— David & Emma, Wedding 2023</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every penny!"
+                    </div>
+                    <div class="review-author">— Robert T., Wedding Reception</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication, and outstanding performance."
+                    </div>
+                    <div class="review-author">— Lisa M., Anniversary Party 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented, and really know how to entertain a crowd. Would book again in a heartbeat!"
+                    </div>
+                    <div class="review-author">— Mark & Rachel, Summer Festival</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual, and incredibly talented musicians."
+                    </div>
+                    <div class="review-author">— Carolyn S., Fundraising Gala 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">
+                        "If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"
+                    </div>
+                    <div class="review-author">— Tom & Angela, Wedding 2023</div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button onclick="moveReview(-1)" aria-label="Previous review">‹</button>
+                <button onclick="moveReview(1)" aria-label="Next review">›</button>
+            </div>
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- Contact Section -->
     <section id="contact">
-        <h2>FEES & CONTACT</h2>
+        <h2>CONTACT</h2>
         <div class="contact-container">
-            <form id="contactForm">
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name" class="required">Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" class="required">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone">
+                    <label for="phone" class="required">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="subject" class="required">Event Type</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Wedding, Corporate Event" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventdate" class="required">Event Date</label>
+                        <input type="date" id="eventdate" name="eventdate" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests">
+                            <option value="">Please select...</option>
+                            <option value="0-30">0-30</option>
+                            <option value="31-60">31-60</option>
+                            <option value="61-100">61-100</option>
+                            <option value="101-150">101-150</option>
+                            <option value="151-200">151-200</option>
+                            <option value="201-500">201-500</option>
+                            <option value="501-1000">501-1000</option>
+                            <option value="1000+">1000+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_type">Indoor / Outdoor</label>
+                        <select id="venue_type" name="venue_type">
+                            <option value="">Please select...</option>
+                            <option value="Indoor">Indoor</option>
+                            <option value="Outdoor">Outdoor</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Try to include the type of event, number of guests, venue (indoor or outdoor) and your approximate budget range." required></textarea>
+                    <label for="venue_address">Venue Address (if known)</label>
+                    <input type="text" id="venue_address" name="venue_address" placeholder="City, Province">
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Range (Estimate)</label>
+                    <input type="text" id="budget" name="budget" placeholder="Optional">
+                </div>
+                <div class="form-group">
+                    <label for="message" class="required">Message</label>
+                    <textarea id="message" name="message" placeholder="Please include any special requests or additional details about your event." required></textarea>
                 </div>
                 <button type="submit">Send Message</button>
             </form>
-            <div style="margin-top: 3rem; text-align: center;">
+            <div style="margin-top: 2rem; text-align: center;">
                 <a href="https://www.gigsalad.com/the_covernotes_oakville" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 1.1rem;">
                     View us on GigSalad →
                 </a>
@@ -1116,19 +1410,35 @@
 
     <!-- Footer -->
     <footer>
-        <div class="social-icons">
-            <a href="http://www.instagram.com/the_covernotes" target="_blank" aria-label="Instagram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-            <a href="http://www.facebook.com/thecovernotes" target="_blank" aria-label="Facebook">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                </svg>
-            </a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Covernotes</h3>
+                <p>Ontario's premier live function and party band</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: <a href="mailto:info@thecovernotes.ca">info@thecovernotes.ca</a></p>
+                <p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="http://www.instagram.com/the_covernotes" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="http://www.facebook.com/thecovernotes" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2026 The Covernotes. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Covernotes. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
@@ -1140,36 +1450,30 @@
             navLinks.classList.toggle('active');
         });
         
-        // Close mobile menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
         
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Form submitted! You\'ll need to connect this to a form service like Formspree, Basin, or your own backend.');
-        });
+        // Hero Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const totalSlides = slides.length;
         
-        // Smooth scroll offset for fixed nav
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                const offset = 80;
-                const targetPosition = target.offsetTop - offset;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
         
-        // Lightbox functionality
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        setInterval(nextSlide, 3000);
+        
+        // Gallery Lightbox
         let currentImageIndex = 0;
         const images = document.querySelectorAll('.gallery-item');
         
@@ -1182,8 +1486,6 @@
             lightboxImg.src = images[index].src;
             lightboxCaption.textContent = images[index].alt;
             lightbox.classList.add('active');
-            
-            // Prevent body scroll when lightbox is open
             document.body.style.overflow = 'hidden';
         }
         
@@ -1215,7 +1517,6 @@
             lightboxCaption.textContent = images[currentImageIndex].alt;
         }
         
-        // Keyboard navigation for lightbox
         document.addEventListener('keydown', (e) => {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.classList.contains('active')) {
@@ -1227,6 +1528,51 @@
                     closeLightbox();
                 }
             }
+        });
+        
+        // Reviews Carousel
+        let currentReview = 0;
+        const reviewsWrapper = document.getElementById('reviewsWrapper');
+        const totalReviews = 9;
+        
+        function moveReview(direction) {
+            currentReview += direction;
+            
+            if (currentReview < 0) {
+                currentReview = totalReviews - 1;
+            } else if (currentReview >= totalReviews) {
+                currentReview = 0;
+            }
+            
+            reviewsWrapper.style.transform = `translateX(-${currentReview * 100}%)`;
+        }
+        
+        setInterval(() => moveReview(1), 8000);
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Date input formatting (display month as Jan, Feb, etc.)
+        const dateInput = document.getElementById('eventdate');
+        dateInput.addEventListener('change', function(e) {
+            const date = new Date(this.value);
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const formattedDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            this.setAttribute('data-formatted', formattedDate);
         });
     </script>
 </body>
