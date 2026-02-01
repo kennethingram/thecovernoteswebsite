@@ -218,20 +218,21 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Gallery Grid - Masonry Style */
+        /* Gallery Grid - Responsive Grid like Showreels */
         .gallery-grid {
-            column-count: 4;
-            column-gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
         
         .gallery-item-wrapper {
-            break-inside: avoid;
-            margin-bottom: 1rem;
             position: relative;
             overflow: hidden;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            aspect-ratio: 1;
         }
         
         .gallery-item-wrapper:hover {
@@ -258,7 +259,7 @@
         
         .gallery-item {
             width: 100%;
-            aspect-ratio: 1;
+            height: 100%;
             object-fit: cover;
             display: block;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -523,7 +524,7 @@
         /* Responsive */
         @media (max-width: 1200px) {
             .gallery-grid {
-                column-count: 3;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
@@ -557,7 +558,7 @@
             }
             
             .gallery-grid {
-                column-count: 2;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .lightbox-prev {
@@ -571,7 +572,7 @@
         
         @media (max-width: 480px) {
             .gallery-grid {
-                column-count: 1;
+                grid-template-columns: 1fr;
             }
         }
         
@@ -639,7 +640,7 @@
     <section id="gallery">
         <h2>GALLERY</h2>
         <div class="gallery-grid">
-            <!-- Image 1 - You can adjust object-position to: top, bottom, left, right, center, or combinations like "top left" -->
+            <!-- Image 1 - You can adjust object-position to: top, bottom, left, right, center -->
             <div class="gallery-item-wrapper" onclick="openLightbox(0)">
                 <img src="images/Review, 40th Birthday Party, Kitchener, Jan 2025.png" 
                      alt="The Covernotes performing live at 40th Birthday Party in Kitchener" 
@@ -663,17 +664,124 @@
                      style="object-position: center;">
             </div>
             
-            <!-- ADD MORE IMAGES HERE - Just copy and paste this block and update the numbers:
+            <!-- Add your remaining images below (up to 16 total) -->
+            <!-- Just replace "your-image.jpg" and "Your description" with your actual files -->
             
+            <!-- Image 4 - TEMPLATE - Copy this block for each new image
             <div class="gallery-item-wrapper" onclick="openLightbox(3)">
-                <img src="images/your-image-name.jpg" 
-                     alt="Your image description" 
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
                      class="gallery-item" 
                      style="object-position: center;">
             </div>
+            -->
             
-            Remember to increment the number in openLightbox(X) for each new image!
-            You can change object-position to: top, bottom, left, right, center, top left, top right, etc.
+            <!-- Image 5
+            <div class="gallery-item-wrapper" onclick="openLightbox(4)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 6
+            <div class="gallery-item-wrapper" onclick="openLightbox(5)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 7
+            <div class="gallery-item-wrapper" onclick="openLightbox(6)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 8
+            <div class="gallery-item-wrapper" onclick="openLightbox(7)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 9
+            <div class="gallery-item-wrapper" onclick="openLightbox(8)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 10
+            <div class="gallery-item-wrapper" onclick="openLightbox(9)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 11
+            <div class="gallery-item-wrapper" onclick="openLightbox(10)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 12
+            <div class="gallery-item-wrapper" onclick="openLightbox(11)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 13
+            <div class="gallery-item-wrapper" onclick="openLightbox(12)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 14
+            <div class="gallery-item-wrapper" onclick="openLightbox(13)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 15
+            <div class="gallery-item-wrapper" onclick="openLightbox(14)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
+            -->
+            
+            <!-- Image 16
+            <div class="gallery-item-wrapper" onclick="openLightbox(15)">
+                <img src="images/your-image.jpg" 
+                     alt="Your description" 
+                     class="gallery-item" 
+                     style="object-position: center;">
+            </div>
             -->
         </div>
     </section>
@@ -712,29 +820,256 @@
     <!-- Set List Section -->
     <section id="setlist">
         <h2>SET LIST</h2>
-        <div class="setlist-columns">
-            <div class="setlist-category">
-                <h3>Classic Rock</h3>
-                <ul>
-                    <li>Add your songs here</li>
-                    <li>Add your songs here</li>
-                    <li>Add your songs here</li>
-                </ul>
-            </div>
+        <div style="max-width: 900px; margin: 0 auto 3rem; text-align: center; font-size: 1.05rem; font-weight: 300; line-height: 1.8;">
+            <p>
+                We have an extensive set list and are well experienced in managing the set list either live or we can work with you to develop the best set arrangement, including specific songs for your event. We include background / iPad music during breaks as standard.
+            </p>
+            <p style="margin-top: 1.5rem;">
+                Example set times as standard cover 3 hours on site and we are flexible with no fuss in the arrangements. Some standard examples are 2x 60 minutes with a 20 min break or 3x 40 minutes with 15 min breaks. On average a set of 1 hour would cover 16-19 songs.
+            </p>
+        </div>
+        
+        <!-- Pop Hits -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
             <div class="setlist-category">
                 <h3>Pop Hits</h3>
                 <ul>
-                    <li>Add your songs here</li>
-                    <li>Add your songs here</li>
-                    <li>Add your songs here</li>
+                    <li>24K Magic - Bruno Mars</li>
+                    <li>Baby I Love Your Way - Peter Frampton</li>
+                    <li>Beat It - Michael Jackson</li>
+                    <li>Billie Jean - Michael Jackson</li>
+                    <li>Blame it on the Boogie - The Jacksons</li>
+                    <li>Blurred Lines - Robin Thicke</li>
+                    <li>Brown Eyed Girl - Van Morrison</li>
+                    <li>Can't Help Falling in Love - Elvis Presley</li>
+                    <li>Cosmic Girl - Jamiroquai</li>
+                    <li>Don't Start Now - Dua Lipa</li>
+                    <li>Dynamite - Taio Cruz</li>
+                    <li>Forget You - CeeLo Green</li>
+                    <li>Get Lucky - Daft Punk ft. Pharrell Williams</li>
+                    <li>Happy - Pharrell Williams</li>
+                    <li>Hero - Enrique Iglesias</li>
+                    <li>How Will I Know - Whitney Houston</li>
+                    <li>I Feel Good - James Brown</li>
+                    <li>I Want It That Way - Backstreet Boys</li>
+                    <li>I Want You Back - The Jackson 5</li>
+                    <li>I Wish - Stevie Wonder</li>
+                    <li>I'm a Believer - The Monkees</li>
                 </ul>
             </div>
             <div class="setlist-category">
-                <h3>Dance & Party</h3>
+                <h3>Pop Hits (cont.)</h3>
                 <ul>
-                    <li>Add your songs here</li>
-                    <li>Add your songs here</li>
-                    <li>Add your songs here</li>
+                    <li>It Wasn't Me - Shaggy</li>
+                    <li>Just the Way You Are - Bruno Mars</li>
+                    <li>Kiss - Prince</li>
+                    <li>Like a Prayer - Madonna</li>
+                    <li>Little L - Jamiroquai</li>
+                    <li>Locked Out of Heaven - Bruno Mars</li>
+                    <li>Lovely Day - Bill Withers</li>
+                    <li>Marry You - Bruno Mars</li>
+                    <li>Master Blaster - Stevie Wonder</li>
+                    <li>Moves Like Jagger - Maroon 5</li>
+                    <li>Play That Funky Music - Wild Cherry</li>
+                    <li>Rock With You - Michael Jackson</li>
+                    <li>Runaway Baby - Bruno Mars</li>
+                    <li>Shake It Off - Taylor Swift</li>
+                    <li>Shape of You - Ed Sheeran</li>
+                    <li>Sorry - Justin Bieber</li>
+                    <li>Sugar - Maroon 5</li>
+                    <li>Superstition - Stevie Wonder</li>
+                    <li>The Power of Love - Huey Lewis and the News</li>
+                    <li>The Way You Make Me Feel - Michael Jackson</li>
+                    <li>Thinking Out Loud - Ed Sheeran</li>
+                    <li>Thriller - Michael Jackson</li>
+                    <li>Treasure - Bruno Mars</li>
+                    <li>Unchained Melody - The Righteous Brothers</li>
+                    <li>Uptown Funk - Mark Ronson ft. Bruno Mars</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Rock -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Rock</h3>
+                <ul>
+                    <li>A Kind of Magic - Queen</li>
+                    <li>All the Small Things - Blink-182</li>
+                    <li>Basket Case - Green Day</li>
+                    <li>Black or White - Michael Jackson</li>
+                    <li>Come Together - The Beatles</li>
+                    <li>Complicated - Avril Lavigne</li>
+                    <li>Crazy Little Thing Called Love - Queen</li>
+                    <li>Don't Stop Me Now - Queen</li>
+                    <li>Great Balls of Fire - Jerry Lee Lewis</li>
+                    <li>Highway to Hell - AC/DC</li>
+                    <li>Honky Tonk Woman - The Rolling Stones</li>
+                    <li>How You Remind Me - Nickelback</li>
+                    <li>I Believe in a Thing Called Love - The Darkness</li>
+                    <li>I Saw Her Standing There - The Beatles</li>
+                    <li>I Want to Break Free - Queen</li>
+                    <li>I'm Still Standing - Elton John</li>
+                    <li>Johnny B Goode - Chuck Berry</li>
+                    <li>Mr. Brightside - The Killers</li>
+                    <li>Pretty Fly for a White Guy - The Offspring</li>
+                    <li>Sex on Fire - Kings of Leon</li>
+                    <li>She Will Be Loved - Maroon 5</li>
+                    <li>Stuck in the Middle With You - Stealers Wheel</li>
+                    <li>Thanks for the Memories - Fall Out Boy</li>
+                    <li>This Love - Maroon 5</li>
+                    <li>Twist and Shout - The Beatles</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Motown, Soul & R&B -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Motown, Soul & R&B</h3>
+                <ul>
+                    <li>Ain't No Sunshine - Bill Withers</li>
+                    <li>Bring it on Home to Me - Sam Cooke</li>
+                    <li>Build Me Up Buttercup - The Foundations</li>
+                    <li>Can't Take My Eyes Off You - Frankie Valli</li>
+                    <li>Downtown Came Uptown - Sam & Dave</li>
+                    <li>Everyday I Have the Blues - B.B. King</li>
+                    <li>Have I Told You Lately - Rod Stewart</li>
+                    <li>How Sweet It Is - James Taylor</li>
+                    <li>Human Nature - Michael Jackson</li>
+                    <li>I Can't Stop Loving You - Ray Charles</li>
+                    <li>I Got a Woman - Ray Charles</li>
+                    <li>I Heard It Through the Grapevine - Marvin Gaye</li>
+                    <li>I'm a Soul Man - Sam & Dave</li>
+                    <li>Let the Good Times Roll - Ray Charles</li>
+                    <li>Let's Stay Together - Al Green</li>
+                    <li>Man in the Mirror - Michael Jackson</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3>Motown, Soul & R&B (cont.)</h3>
+                <ul>
+                    <li>Midnight Hour - Wilson Pickett</li>
+                    <li>Money, That's What I Want - Barrett Strong</li>
+                    <li>My Girl - The Temptations</li>
+                    <li>Oh What a Night (December '63) - The Four Seasons</li>
+                    <li>Respect - Aretha Franklin</li>
+                    <li>September - Earth, Wind & Fire</li>
+                    <li>Signed Sealed Delivered - Stevie Wonder</li>
+                    <li>Stand by Me - Ben E. King</li>
+                    <li>Sweet Home Chicago - Robert Johnson</li>
+                    <li>Valerie - Amy Winehouse</li>
+                    <li>When a Man Loves a Woman - Percy Sledge</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Latin -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Latin</h3>
+                <ul>
+                    <li>Bailamos - Enrique Iglesias</li>
+                    <li>Bamboleo - Gipsy Kings</li>
+                    <li>Cuba - Gibson Brothers</li>
+                    <li>La Bamba - Ritchie Valens</li>
+                    <li>Maria Maria - Santana ft. The Product G&B</li>
+                    <li>Mas Que Nada - Sergio Mendes</li>
+                    <li>Oye Como Va - Santana</li>
+                    <li>Smooth - Santana ft. Rob Thomas</li>
+                    <li>Volare - Dean Martin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Reggae -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Reggae</h3>
+                <ul>
+                    <li>Baby I Love Your Way - Peter Frampton</li>
+                    <li>Good Thing Going - Sugar Minott</li>
+                    <li>Jammin' - Bob Marley</li>
+                    <li>Lazy Song - Bruno Mars</li>
+                    <li>Mysterious Girl - Peter Andre</li>
+                    <li>No Woman No Cry - Bob Marley</li>
+                    <li>One Love - Bob Marley</li>
+                    <li>Stir It Up - Bob Marley</li>
+                    <li>Sweat - Inner Circle</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Hip Hop & Rap -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Hip Hop & Rap</h3>
+                <ul>
+                    <li>Baby Got Back - Sir Mix-a-Lot</li>
+                    <li>Can't Touch This - MC Hammer</li>
+                    <li>Gangsta's Paradise - Coolio</li>
+                    <li>Gettin' Jiggy Wit' It - Will Smith</li>
+                    <li>It's Like That - Run-DMC</li>
+                    <li>No Diggity - Blackstreet</li>
+                    <li>Pony - Ginuwine</li>
+                    <li>Rapper's Delight - The Sugarhill Gang</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Classic Rock & Roll -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Classic Rock & Roll</h3>
+                <ul>
+                    <li>Blue Suede Shoes - Elvis Presley</li>
+                    <li>Burning Love - Elvis Presley</li>
+                    <li>Do You Love Me - The Contours</li>
+                    <li>Green Door - Jim Lowe</li>
+                    <li>Hound Dog - Elvis Presley</li>
+                    <li>Jailhouse Rock - Elvis Presley</li>
+                    <li>Tear It Up - Elvis Presley</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Christmas Classics -->
+        <div class="setlist-columns" style="margin-bottom: 4rem;">
+            <div class="setlist-category">
+                <h3>Christmas Classics</h3>
+                <ul>
+                    <li>Blue Christmas - Elvis Presley</li>
+                    <li>Feliz Navidad - José Feliciano</li>
+                    <li>Jingle Bell Rock - Bobby Helms</li>
+                    <li>Jingle Bells - Traditional</li>
+                    <li>Last Christmas - Wham!</li>
+                    <li>Let It Snow - Dean Martin</li>
+                    <li>Merry Christmas Everyone - Shakin' Stevens</li>
+                    <li>Rockin' Around the Christmas Tree - Brenda Lee</li>
+                    <li>Run Run Rudolph - Chuck Berry</li>
+                    <li>Santa Claus is Coming to Town - Bruce Springsteen</li>
+                    <li>Silver Bells - Bing Crosby</li>
+                    <li>Slade's Merry Christmas - Slade</li>
+                    <li>Walking in a Winter Wonderland - Dean Martin</li>
+                    <li>White Christmas - Bing Crosby</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Halloween Classics -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Halloween Classics</h3>
+                <ul>
+                    <li>Addams Family Theme Tune - Vic Mizzy</li>
+                    <li>Bad Moon Rising - Creedence Clearwater Revival</li>
+                    <li>Black Magic Woman - Santana</li>
+                    <li>Ghostbusters Theme Tune - Ray Parker Jr.</li>
+                    <li>Highway to Hell - AC/DC</li>
+                    <li>Wednesday Theme - Goo Goo Muck - The Cramps</li>
+                    <li>Scooby Doo Theme Tune - Larry Marks</li>
+                    <li>Superstition - Stevie Wonder</li>
+                    <li>Thriller - Michael Jackson</li>
                 </ul>
             </div>
         </div>
