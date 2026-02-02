@@ -767,20 +767,23 @@
         }
         
         /* Footer Logo Styling */
-            .footer-logo-col {
-                display: flex;
-                justify-content: flex-end;  /* Aligns logo to the right on desktop */
-                align-items: flex-start;
-            }
-            
-            .footer-logo-img {
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-                border-radius: 50%;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-                display: block;
-            }
+                .footer-logo-col {
+                    display: flex;
+                    justify-content: flex-end;  /* Aligns logo to the right on desktop */
+                    align-items: flex-start;
+                }
+                
+                .footer-logo-img {
+                    width: 100px !important;
+                    height: 100px !important;
+                    max-width: 100px !important;
+                    max-height: 100px !important;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    display: block;
+                }
+
             
             /* Mobile: Centers the logo at the very bottom */
             @media (max-width: 768px) {
