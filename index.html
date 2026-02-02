@@ -595,7 +595,11 @@
             font-family: 'Outfit', sans-serif;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            /* ADD THESE TWO LINES TO FIX MOBILE BORDERS */
+            /* Forces identical height across all browsers */
+            height: 54px; 
+            line-height: 1.2;
+            
+            /* Removes default mobile system styling/borders */
             appearance: none;
             -webkit-appearance: none;
         }
