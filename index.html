@@ -692,10 +692,16 @@
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
             margin-bottom: 1.5rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
         }
         
         .footer-section h3 {
@@ -756,21 +762,16 @@
         
         @media (max-width: 768px) {
             .nav-container {
-                justify-content: center;
+                justify-content: space-between;
                 position: relative;
             }
             
             .mobile-menu {
-                position: absolute;
-                right: 2rem;
+                display: flex;
             }
             
             .nav-links {
                 display: none;
-            }
-            
-            .mobile-menu {
-                display: flex;
             }
             
             .nav-links.active {
@@ -822,6 +823,19 @@
             
             .form-row {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
             }
         }
         
@@ -1414,13 +1428,19 @@
             });
         });
         
-        // Hero Carousel - 3s change + 3s zoom to 10%
+        // Hero Carousel - 3s change + 3.2s zoom to 10%
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const totalSlides = slides.length;
         
         function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                // Reset the animation by cloning and replacing the img
+                const img = slide.querySelector('img');
+                const newImg = img.cloneNode(true);
+                img.parentNode.replaceChild(newImg, img);
+            });
             slides[index].classList.add('active');
         }
         
@@ -1429,6 +1449,10 @@
             showSlide(currentSlide);
         }
         
+        // Initialize first slide
+        showSlide(0);
+        
+        // Change slide every 3 seconds
         setInterval(nextSlide, 3000);
         
         // Gallery Carousel - 3s auto, seamless cycle
