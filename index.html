@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='white' stroke='white' stroke-width='2'%3E%3Cpath d='M15,20 L15,50 M13,25 L17,25 M13,30 L17,30 M13,35 L17,35 M13,40 L17,40 M13,45 L17,45' /%3E%3Ccircle cx='15' cy='18' r='3' fill='none'/%3E%3Cpath d='M35,25 L35,55 M33,30 L37,30 M33,35 L37,35 M33,40 L37,40 M33,45 L37,45' /%3E%3Cpath d='M32,25 L38,25 L35,20 Z' fill='white'/%3E%3Cellipse cx='55' cy='25' rx='6' ry='8' fill='none'/%3E%3Cpath d='M55,33 L55,50 M50,50 L60,50' /%3E%3Cline x1='52' y1='27' x2='52' y2='23'/%3E%3Cline x1='55' y1='27' x2='55' y2='23'/%3E%3Cline x1='58' y1='27' x2='58' y2='23'/%3E%3Cpath d='M72,20 L72,55 M75,20 L75,55' /%3E%3Cellipse cx='72' cy='18' rx='2' ry='3' /%3E%3Cellipse cx='75' cy='18' rx='2' ry='3' /%3E%3Crect x='10' y='65' width='80' height='15' fill='none'/%3E%3Cline x1='20' y1='65' x2='20' y2='80'/%3E%3Cline x1='30' y1='65' x2='30' y2='80'/%3E%3Cline x1='40' y1='65' x2='40' y2='80'/%3E%3Cline x1='50' y1='65' x2='50' y2='80'/%3E%3Cline x1='60' y1='65' x2='60' y2='80'/%3E%3Cline x1='70' y1='65' x2='70' y2='80'/%3E%3Cline x1='80' y1='65' x2='80' y2='80'/%3E%3Crect x='15' y='65' width='4' height='8' fill='white'/%3E%3Crect x='25' y='65' width='4' height='8' fill='white'/%3E%3Crect x='45' y='65' width='4' height='8' fill='white'/%3E%3Crect x='55' y='65' width='4' height='8' fill='white'/%3E%3Crect x='65' y='65' width='4' height='8' fill='white'/%3E%3C/g%3E%3C/svg%3E">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Covernotes | Live Party and Events Cover Band | Ontario, Canada</title>
     <meta name="description" content="The Covernotes - Premier live function and party band in Ontario, Canada. Book us for your next event!">
@@ -59,18 +62,14 @@
             letter-spacing: 2px;
             color: var(--secondary);
             text-decoration: none;
-            position: relative;
-            padding-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
         
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--secondary);
+        .logo-icon {
+            width: 35px;
+            height: 35px;
         }
         
         .nav-links {
@@ -251,7 +250,7 @@
         
         /* Sections */
         section {
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -394,8 +393,8 @@
         
         .lightbox-content {
             position: relative;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 85%;
+            max-height: 85%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -403,7 +402,7 @@
         
         .lightbox-image {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 75vh;
             object-fit: contain;
             border-radius: 4px;
         }
@@ -457,6 +456,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 2001;
             transition: all 0.3s ease;
         }
         
@@ -487,7 +487,7 @@
         .setlist-columns {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            gap: 2.5rem;
             margin-bottom: 3rem;
         }
         
@@ -495,7 +495,8 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.8rem;
             letter-spacing: 2px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
+            margin-top: 0.3rem;
             color: var(--accent);
         }
         
@@ -504,7 +505,7 @@
         }
         
         .setlist-category li {
-            padding: 0.25rem 0;
+            padding: 0.15rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             font-weight: 300;
             font-size: 0.95rem;
@@ -583,7 +584,7 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-bottom: 1rem;
         }
         
@@ -593,7 +594,7 @@
         
         .form-group label {
             display: block;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             font-weight: 300;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -802,7 +803,38 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">THE COVERNOTES</a>
+            <a href="#home" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="white" stroke-width="2" fill="white">
+                        <path d="M15,20 L15,50 M13,25 L17,25 M13,30 L17,30 M13,35 L17,35 M13,40 L17,40 M13,45 L17,45" />
+                        <circle cx="15" cy="18" r="3" fill="none"/>
+                        <path d="M35,25 L35,55 M33,30 L37,30 M33,35 L37,35 M33,40 L37,40 M33,45 L37,45" />
+                        <path d="M32,25 L38,25 L35,20 Z" fill="white"/>
+                        <ellipse cx="55" cy="25" rx="6" ry="8" fill="none"/>
+                        <path d="M55,33 L55,50 M50,50 L60,50" />
+                        <line x1="52" y1="27" x2="52" y2="23"/>
+                        <line x1="55" y1="27" x2="55" y2="23"/>
+                        <line x1="58" y1="27" x2="58" y2="23"/>
+                        <path d="M72,20 L72,55 M75,20 L75,55" />
+                        <ellipse cx="72" cy="18" rx="2" ry="3" />
+                        <ellipse cx="75" cy="18" rx="2" ry="3" />
+                        <rect x="10" y="65" width="80" height="15" fill="none"/>
+                        <line x1="20" y1="65" x2="20" y2="80"/>
+                        <line x1="30" y1="65" x2="30" y2="80"/>
+                        <line x1="40" y1="65" x2="40" y2="80"/>
+                        <line x1="50" y1="65" x2="50" y2="80"/>
+                        <line x1="60" y1="65" x2="60" y2="80"/>
+                        <line x1="70" y1="65" x2="70" y2="80"/>
+                        <line x1="80" y1="65" x2="80" y2="80"/>
+                        <rect x="15" y="65" width="4" height="8" fill="white"/>
+                        <rect x="25" y="65" width="4" height="8" fill="white"/>
+                        <rect x="45" y="65" width="4" height="8" fill="white"/>
+                        <rect x="55" y="65" width="4" height="8" fill="white"/>
+                        <rect x="65" y="65" width="4" height="8" fill="white"/>
+                    </g>
+                </svg>
+                THE COVERNOTES
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -841,7 +873,7 @@
         </div>
         <div class="hero-content">
             <h1>THE COVERNOTES</h1>
-            <p>Live Function and Party Band</p>
+            <p>Live Party and Events Band</p>
             <div class="social-icons">
                 <a href="https://www.instagram.com/the_covernotes/" target="_blank" aria-label="Instagram">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1417,8 +1449,8 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Email: <a href="mailto:info@thecovernotes.ca">info@thecovernotes.ca</a></p>
-                <p>Phone: <a href="tel:+1234567890">(365) 779-0323</a></p>
+                <p>Email: <a href="/cdn-cgi/l/email-protection#e78e898188a7938f8284889182958988938294c98486"><span class="__cf_email__" data-cfemail="6900070f06291d010c0a061f0c1b07061d0c1a470a08">[email&#160;protected]</span></a></p>
+                <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
@@ -1441,7 +1473,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobileMenu');
         const navLinks = document.getElementById('navLinks');
@@ -1570,10 +1602,4 @@
         const dateInput = document.getElementById('eventdate');
         dateInput.addEventListener('change', function(e) {
             const date = new Date(this.value);
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            const formattedDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-            this.setAttribute('data-formatted', formattedDate);
-        });
-    </script>
-</body>
-</html>
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
