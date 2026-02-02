@@ -67,7 +67,6 @@
         .logo-icon {
             width: 35px;
             height: 35px;
-            object-fit: contain;
         }
         
         .nav-links {
@@ -145,7 +144,7 @@
         }
         
         .hero-slide.active img {
-            animation: zoomIn 3.2s ease-in-out forwards;
+            animation: zoomIn 3s ease-in-out forwards;
         }
         
         @keyframes zoomIn {
@@ -294,61 +293,6 @@
             aspect-ratio: 16/9;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .video-carousel {
-            position: relative;
-            max-width: 1400px;
-            margin: 1.5rem auto;
-            overflow: hidden;
-        }
-        
-        .video-wrapper {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.6s ease;
-        }
-        
-        .video-item-wrapper {
-            flex: 0 0 calc((100% - 4rem) / 3);
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .video-item-wrapper iframe {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .video-carousel .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .video-carousel .carousel-nav button {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--secondary);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .video-carousel .carousel-nav button:hover {
-            background: var(--accent);
-            border-color: var(--accent);
         }
         
         .gallery-carousel {
@@ -692,16 +636,10 @@
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin-bottom: 1.5rem;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
         }
         
         .footer-section h3 {
@@ -761,17 +699,12 @@
         }
         
         @media (max-width: 768px) {
-            .nav-container {
-                justify-content: space-between;
-                position: relative;
+            .nav-links {
+                display: none;
             }
             
             .mobile-menu {
                 display: flex;
-            }
-            
-            .nav-links {
-                display: none;
             }
             
             .nav-links.active {
@@ -802,10 +735,6 @@
                 flex: 0 0 100%;
             }
             
-            .video-item-wrapper {
-                flex: 0 0 100%;
-            }
-            
             .hero h1 {
                 font-size: clamp(3.5rem, 12vw, 7rem);
                 white-space: nowrap;
@@ -824,19 +753,6 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .footer-section {
-                text-align: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
-            }
         }
         
         html {
@@ -849,7 +765,7 @@
     <nav>
         <div class="nav-container">
             <a href="#home" class="logo">
-                <img src="images/covernoteslogo.jpg" alt="The Covernotes Logo" class="logo-icon">
+                
                 THE COVERNOTES
             </a>
             <ul class="nav-links" id="navLinks">
@@ -857,8 +773,8 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#showreels">Showreels</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#setlist">Set List</a></li>
+                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
@@ -927,22 +843,10 @@
     <!-- Showreels Section -->
     <section id="showreels">
         <h2>SHOWREELS</h2>
-        <div class="video-carousel" id="videoCarousel">
-            <div class="video-wrapper" id="videoWrapper">
-                <div class="video-item-wrapper">
-                    <iframe src="https://www.youtube.com/embed/UAmWV9nk6Yw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item-wrapper">
-                    <iframe src="https://www.youtube.com/embed/yfEIqsvBN0s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item-wrapper">
-                    <iframe src="https://www.youtube.com/embed/xuNeyzvruLg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="carousel-nav">
-                <button onclick="moveVideo(-1)" aria-label="Previous video">‹</button>
-                <button onclick="moveVideo(1)" aria-label="Next video">›</button>
-            </div>
+        <div class="showreels-grid">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/UAmWV9nk6Yw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/yfEIqsvBN0s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/xuNeyzvruLg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -996,66 +900,7 @@
         </div>
     </div>
 
-    
     <div class="section-divider"></div>
-
-    <!-- Reviews Section -->
-    <section id="reviews">
-        <h2>REVIEWS</h2>
-        <div class="reviews-carousel" id="reviewsCarousel">
-            <div class="reviews-wrapper" id="reviewsWrapper">
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented, and so much fun. Highly recommend!"</div>
-                    <div class="review-author">— Sarah & Mike, Wedding 2024</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection, and they had everyone from the CEO to the interns on the dance floor!"</div>
-                    <div class="review-author">— Tech Corp, Corporate Event 2024</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating, and their music selection is perfect for all ages."</div>
-                    <div class="review-author">— Jennifer L., 50th Birthday Party</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"From our first meeting to the last song of the night, The Covernotes were amazing. They worked with us on song selections and made sure our special day was perfect. Can't thank them enough!"</div>
-                    <div class="review-author">— David & Emma, Wedding 2023</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every penny!"</div>
-                    <div class="review-author">— Robert T., Wedding Reception</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication, and outstanding performance."</div>
-                    <div class="review-author">— Lisa M., Anniversary Party 2024</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented, and really know how to entertain a crowd. Would book again in a heartbeat!"</div>
-                    <div class="review-author">— Mark & Rachel, Summer Festival</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual, and incredibly talented musicians."</div>
-                    <div class="review-author">— Carolyn S., Fundraising Gala 2024</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-text">"If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"</div>
-                    <div class="review-author">— Tom & Angela, Wedding 2023</div>
-                </div>
-            </div>
-            <div class="carousel-nav">
-                <button onclick="moveReview(-1)" aria-label="Previous review">‹</button>
-                <button onclick="moveReview(1)" aria-label="Next review">›</button>
-            </div>
-        </div>
-    </section><div class="section-divider"></div>
 
     <!-- Set List Section -->
     <section id="setlist">
@@ -1302,7 +1147,65 @@
         </div>
     </section>
 
-    
+    <div class="section-divider"></div>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <h2>REVIEWS</h2>
+        <div class="reviews-carousel" id="reviewsCarousel">
+            <div class="reviews-wrapper" id="reviewsWrapper">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented, and so much fun. Highly recommend!"</div>
+                    <div class="review-author">— Sarah & Mike, Wedding 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection, and they had everyone from the CEO to the interns on the dance floor!"</div>
+                    <div class="review-author">— Tech Corp, Corporate Event 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating, and their music selection is perfect for all ages."</div>
+                    <div class="review-author">— Jennifer L., 50th Birthday Party</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"From our first meeting to the last song of the night, The Covernotes were amazing. They worked with us on song selections and made sure our special day was perfect. Can't thank them enough!"</div>
+                    <div class="review-author">— David & Emma, Wedding 2023</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every penny!"</div>
+                    <div class="review-author">— Robert T., Wedding Reception</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication, and outstanding performance."</div>
+                    <div class="review-author">— Lisa M., Anniversary Party 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented, and really know how to entertain a crowd. Would book again in a heartbeat!"</div>
+                    <div class="review-author">— Mark & Rachel, Summer Festival</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual, and incredibly talented musicians."</div>
+                    <div class="review-author">— Carolyn S., Fundraising Gala 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"</div>
+                    <div class="review-author">— Tom & Angela, Wedding 2023</div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button onclick="moveReview(-1)" aria-label="Previous review">‹</button>
+                <button onclick="moveReview(1)" aria-label="Next review">›</button>
+            </div>
+        </div>
+    </section>
 
     <div class="section-divider"></div>
 
@@ -1389,7 +1292,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Email: <a href="/cdn-cgi/l/email-protection#2b42454d446b5f434e48445d4e5945445f4e5805484a"><span class="__cf_email__" data-cfemail="2b42454d446b5f434e48445d4e5945445f4e5805484a">[email&#160;protected]</span></a></p>
+                <p>Email: <a href="mailto:info@thecovernotes.ca">info@thecovernotes.ca</a></p>
                 <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
             </div>
             <div class="footer-section">
@@ -1413,7 +1316,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobileMenu');
         const navLinks = document.getElementById('navLinks');
@@ -1428,19 +1331,13 @@
             });
         });
         
-        // Hero Carousel - 3s change + 3.2s zoom to 10%
+        // Hero Carousel - 3s change + 3s zoom to 10%
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const totalSlides = slides.length;
         
         function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                // Reset the animation by cloning and replacing the img
-                const img = slide.querySelector('img');
-                const newImg = img.cloneNode(true);
-                img.parentNode.replaceChild(newImg, img);
-            });
+            slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
         }
         
@@ -1449,10 +1346,6 @@
             showSlide(currentSlide);
         }
         
-        // Initialize first slide
-        showSlide(0);
-        
-        // Change slide every 3 seconds
         setInterval(nextSlide, 3000);
         
         // Gallery Carousel - 3s auto, seamless cycle
@@ -1474,25 +1367,6 @@
         
         moveGallery(0);
         setInterval(() => moveGallery(1), 3000);
-        
-        // Video Carousel - Manual only, no auto-scroll
-        let currentVideo = 0;
-        const videoWrapper = document.getElementById('videoWrapper');
-        const videoItems = document.querySelectorAll('.video-item-wrapper');
-        const totalVideos = videoItems.length;
-        
-        function moveVideo(direction) {
-            currentVideo += direction;
-            if (currentVideo < 0) currentVideo = totalVideos - 1;
-            if (currentVideo >= totalVideos) currentVideo = 0;
-            
-            const gapPx = parseFloat(getComputedStyle(videoWrapper).gap) || 32;
-            const itemWidth = videoItems[0] ? videoItems[0].offsetWidth : 0;
-            const offset = (itemWidth + gapPx) * currentVideo;
-            videoWrapper.style.transform = `translateX(-${offset}px)`;
-        }
-        
-        moveVideo(0);
         
         // Reviews Carousel - 3s auto, seamless cycle
         let currentReview = 0;
@@ -1566,4 +1440,14 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     const offset = 90;
-                    const targetPosition = target.getBoundingClientRect().top + window.p
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
