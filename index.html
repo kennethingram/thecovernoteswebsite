@@ -134,7 +134,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 1s ease-in-out;
         }
         
         .hero-slide.active {
@@ -145,13 +145,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            animation: zoomIn 20s ease-in-out infinite;
+        }
+        
+        .hero-slide.active img {
+            animation: zoomIn 2s ease-in-out forwards;
         }
         
         @keyframes zoomIn {
             0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            100% { transform: scale(1.2); }
         }
         
         .hero::after {
@@ -186,7 +188,7 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 10vw, 8rem);
             letter-spacing: 8px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary);
             text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
             position: relative;
@@ -208,7 +210,7 @@
             font-size: clamp(1.2rem, 3vw, 2rem);
             font-weight: 300;
             letter-spacing: 2px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             opacity: 0.9;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
@@ -217,7 +219,7 @@
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
         
         .social-icons a {
@@ -250,16 +252,17 @@
         
         /* Sections */
         section {
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            scroll-margin-top: 90px;
         }
         
         section h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             letter-spacing: 4px;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
         
@@ -319,15 +322,22 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+        /* Gallery Carousel */
+        .gallery-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+        
+        .gallery-wrapper {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
         }
         
         .gallery-item-wrapper {
+            flex: 0 0 calc((100% - 4rem) / 3);
             position: relative;
             overflow: hidden;
             border-radius: 8px;
@@ -514,7 +524,7 @@
         /* Reviews Carousel */
         .reviews-carousel {
             position: relative;
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 2rem auto;
             overflow: hidden;
         }
@@ -525,9 +535,10 @@
         }
         
         .review-card {
-            min-width: 100%;
+            flex: 0 0 calc(100% / 3);
             padding: 2rem;
             text-align: center;
+            flex-shrink: 0;
         }
         
         .review-stars {
@@ -726,8 +737,8 @@
         
         /* Responsive */
         @media (max-width: 1200px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .gallery-item-wrapper {
+                flex: 0 0 calc((100% - 2rem) / 2);
             }
         }
         
@@ -760,16 +771,12 @@
                 grid-template-columns: 1fr;
             }
             
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .gallery-item-wrapper {
+                flex: 0 0 100%;
             }
             
-            .lightbox-prev {
-                left: 10px;
-            }
-            
-            .lightbox-next {
-                right: 10px;
+            .review-card {
+                flex: 0 0 100%;
             }
             
             .about-cta {
@@ -783,12 +790,6 @@
             }
             
             .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .gallery-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -895,15 +896,9 @@
     <section id="about">
         <h2>ABOUT US</h2>
         <div class="about-content">
-            <p>
-                The Covernotes is Ontario's premier live function and events band that plays everything from the classics to current floor fillers. We bring energy and excitement to your event, with a diverse repertoire across pop, rock, soul, funk, reggae and contemporary hits to create unforgettable experiences that keep your guests on the dance floor all night long.
-            </p>
-            <p>
-                We are fun and flexible with a professional attitude. We are all experienced in performing live having played hundreds of gigs across numerous countries and venues.
-            </p>
-            <p>
-                We pride ourselves on being reliable performers, multi-instrumentalists and vocalists providing professional and energetic performances of the highest calibre. We are immaculately turned out, friendly, accommodating and enthusiastic, always giving 100%. We carry our own professional instruments with a full top of the line PA system.
-            </p>
+            <p>The Covernotes is Ontario's premier live function and events band that plays everything from the classics to current floor fillers. We bring energy and excitement to your event, with a diverse repertoire across pop, rock, soul, funk, reggae and contemporary hits to create unforgettable experiences that keep your guests on the dance floor all night long.</p>
+            <p>We are fun and flexible with a professional attitude. We are all experienced in performing live having played hundreds of gigs across numerous countries and venues.</p>
+            <p>We pride ourselves on being reliable performers, multi-instrumentalists and vocalists providing professional and energetic performances of the highest calibre. We are immaculately turned out, friendly, accommodating and enthusiastic, always giving 100%. We carry our own professional instruments with a full top of the line PA system.</p>
             <div class="about-cta">
                 <a href="#contact" class="cta-button">Book Us Now</a>
                 <a href="#setlist" class="cta-button">View Set List</a>
@@ -918,9 +913,7 @@
         <h2>SHOWREELS</h2>
         <div class="showreels-grid">
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/UAmWV9nk6Yw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/yfEIqsvBN0s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/xuNeyzvruLg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
@@ -930,63 +923,37 @@
     <!-- Gallery Section -->
     <section id="gallery">
         <h2>GALLERY</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item-wrapper" onclick="openLightbox(0)">
-                <img src="images/Outdoor 3 Piece Front Full Band on Amphitheatre.JPG"
-                     alt="Outdoor Performance at Ribfest/Festival, 2023"
-                     class="gallery-item"
-                     style="object-position: center;">
+        <div class="gallery-carousel">
+            <div class="gallery-wrapper" id="galleryWrapper">
+                <div class="gallery-item-wrapper" onclick="openLightbox(0)">
+                    <img src="images/Outdoor 3 Piece Front Full Band on Amphitheatre.JPG" alt="Outdoor Performance at Ribfest/Festival, 2023" class="gallery-item" style="object-position: center;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(1)">
+                    <img src="images/Sunlife - Band front on.jpeg" alt="Downtown Toronto Corporate Event, 2024" class="gallery-item" style="object-position: center;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(2)">
+                    <img src="images/Outdoor, Ken Front Singing .jpg.jpg" alt="Ken on Bass and Vocals at Ribfest/Festival, 2023" class="gallery-item" style="object-position: center;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(3)">
+                    <img src="images/Outdoor, Rol Front Singing .jpg" alt="Rol on Guitar and Vocals at Ribfest/Festival, 2023" class="gallery-item" style="object-position: center;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(4)">
+                    <img src="images/Sunlife - Drummer Brian.jpeg" alt="Brian on Drums at Corporate Event, 2024" class="gallery-item" style="object-position: top;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(5)">
+                    <img src="images/Rol - Acoustic.jpg" alt="Rol on Guitar at Wedding Ceremony, 2023" class="gallery-item" style="object-position: center;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(7)">
+                    <img src="images/Ken on keys close up.jpg" alt="Close up of Keys, 2024" class="gallery-item" style="object-position: center;">
+                </div>
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
+                    <img src="images/Rol Guitar close up.jpg" alt="Close up of Guitar, 2024" class="gallery-item" style="object-position: center;">
+                </div>
             </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(1)">
-                <img src="images/Sunlife - Band front on.jpeg"
-                     alt="Downtown Toronto Corporate Event, 2024"
-                     class="gallery-item"
-                     style="object-position: center;">
+            <div class="carousel-nav">
+                <button onclick="moveGallery(-1)" aria-label="Previous gallery image">‹</button>
+                <button onclick="moveGallery(1)" aria-label="Next gallery image">›</button>
             </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(2)">
-                <img src="images/Outdoor, Ken Front Singing .jpg.jpg"
-                     alt="Ken on Bass and Vocals at Ribfest/Festival, 2023"
-                     class="gallery-item"
-                     style="object-position: center;">
-            </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(3)">
-                <img src="images/Outdoor, Rol Front Singing .jpg"
-                     alt="Rol on Guitar and Vocals at Ribfest/Festival, 2023"
-                     class="gallery-item"
-                     style="object-position: center;">
-            </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(4)">
-                <img src="images/Sunlife - Drummer Brian.jpeg"
-                     alt="Brian on Drums at Corporate Event, 2024"
-                     class="gallery-item"
-                     style="object-position: top;">
-            </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(5)">
-                <img src="images/Rol - Acoustic.jpg"
-                     alt="Rol on Guitar at Wedding Ceremony, 2023"
-                     class="gallery-item"
-                     style="object-position: center;">
-            </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(7)">
-                <img src="images/Ken on keys close up.jpg"
-                     alt="Close up of Keys, 2024"
-                     class="gallery-item"
-                     style="object-position: center;">
-            </div>
-            
-            <div class="gallery-item-wrapper" onclick="openLightbox(8)">
-                <img src="images/Rol Guitar close up.jpg"
-                     alt="Close up of Guitar, 2024"
-                     class="gallery-item"
-                     style="object-position: center;">
-            </div>
-            
         </div>
     </section>
 
@@ -1007,12 +974,8 @@
     <section id="setlist">
         <h2>SET LIST</h2>
         <div class="setlist-intro">
-            <p>
-                We have an extensive set list and are well experienced in managing the set list either live or we can work with you to develop the best set arrangement, including specific songs for your event. We include background / iPad music during breaks as standard.
-            </p>
-            <p style="margin-top: 1.5rem;">
-                Example set times as standard cover 3 hours on site and we are flexible with no fuss in the arrangements. Some standard examples are 2x 60 minutes with a 20 min break or 3x 40 minutes with 15 min breaks. On average a set of 1 hour would cover 16-19 songs.
-            </p>
+            <p>We have an extensive set list and are well experienced in managing the set list either live or we can work with you to develop the best set arrangement, including specific songs for your event. We include background / iPad music during breaks as standard.</p>
+            <p style="margin-top: 1.5rem;">Example set times as standard cover 3 hours on site and we are flexible with no fuss in the arrangements. Some standard examples are 2x 60 minutes with a 20 min break or 3x 40 minutes with 15 min breaks. On average a set of 1 hour would cover 16-19 songs.</p>
         </div>
         
         <!-- Pop Hits -->
@@ -1152,9 +1115,21 @@
                 </ul>
             </div>
         </div>
-        
-        <!-- Latin -->
+
+        <!-- Classic Rock & Roll + Latin -->
         <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Classic Rock & Roll</h3>
+                <ul>
+                    <li>Blue Suede Shoes - Elvis Presley</li>
+                    <li>Burning Love - Elvis Presley</li>
+                    <li>Do You Love Me - The Contours</li>
+                    <li>Green Door - Jim Lowe</li>
+                    <li>Hound Dog - Elvis Presley</li>
+                    <li>Jailhouse Rock - Elvis Presley</li>
+                    <li>Tear It Up - Elvis Presley</li>
+                </ul>
+            </div>
             <div class="setlist-category">
                 <h3>Latin</h3>
                 <ul>
@@ -1170,8 +1145,8 @@
                 </ul>
             </div>
         </div>
-        
-        <!-- Reggae -->
+
+        <!-- Reggae + Hip Hop & Rap -->
         <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Reggae</h3>
@@ -1187,10 +1162,6 @@
                     <li>Sweat - Inner Circle</li>
                 </ul>
             </div>
-        </div>
-        
-        <!-- Hip Hop & Rap -->
-        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Hip Hop & Rap</h3>
                 <ul>
@@ -1205,24 +1176,8 @@
                 </ul>
             </div>
         </div>
-        
-        <!-- Classic Rock & Roll -->
-        <div class="setlist-columns">
-            <div class="setlist-category">
-                <h3>Classic Rock & Roll</h3>
-                <ul>
-                    <li>Blue Suede Shoes - Elvis Presley</li>
-                    <li>Burning Love - Elvis Presley</li>
-                    <li>Do You Love Me - The Contours</li>
-                    <li>Green Door - Jim Lowe</li>
-                    <li>Hound Dog - Elvis Presley</li>
-                    <li>Jailhouse Rock - Elvis Presley</li>
-                    <li>Tear It Up - Elvis Presley</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Christmas Classics -->
+
+        <!-- Christmas + Halloween -->
         <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Christmas Classics</h3>
@@ -1243,10 +1198,6 @@
                     <li>White Christmas - Bing Crosby</li>
                 </ul>
             </div>
-        </div>
-        
-        <!-- Halloween Classics -->
-        <div class="setlist-columns">
             <div class="setlist-category">
                 <h3>Halloween Classics</h3>
                 <ul>
@@ -1273,65 +1224,47 @@
             <div class="reviews-wrapper" id="reviewsWrapper">
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented, and so much fun. Highly recommend!"
-                    </div>
+                    <div class="review-text">"The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented, and so much fun. Highly recommend!"</div>
                     <div class="review-author">— Sarah & Mike, Wedding 2024</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection, and they had everyone from the CEO to the interns on the dance floor!"
-                    </div>
+                    <div class="review-text">"We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection, and they had everyone from the CEO to the interns on the dance floor!"</div>
                     <div class="review-author">— Tech Corp, Corporate Event 2024</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating, and their music selection is perfect for all ages."
-                    </div>
+                    <div class="review-text">"Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating, and their music selection is perfect for all ages."</div>
                     <div class="review-author">— Jennifer L., 50th Birthday Party</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "From our first meeting to the last song of the night, The Covernotes were amazing. They worked with us on song selections and made sure our special day was perfect. Can't thank them enough!"
-                    </div>
+                    <div class="review-text">"From our first meeting to the last song of the night, The Covernotes were amazing. They worked with us on song selections and made sure our special day was perfect. Can't thank them enough!"</div>
                     <div class="review-author">— David & Emma, Wedding 2023</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every penny!"
-                    </div>
+                    <div class="review-text">"The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every penny!"</div>
                     <div class="review-author">— Robert T., Wedding Reception</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication, and outstanding performance."
-                    </div>
+                    <div class="review-text">"Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication, and outstanding performance."</div>
                     <div class="review-author">— Lisa M., Anniversary Party 2024</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented, and really know how to entertain a crowd. Would book again in a heartbeat!"
-                    </div>
+                    <div class="review-text">"The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented, and really know how to entertain a crowd. Would book again in a heartbeat!"</div>
                     <div class="review-author">— Mark & Rachel, Summer Festival</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual, and incredibly talented musicians."
-                    </div>
+                    <div class="review-text">"From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual, and incredibly talented musicians."</div>
                     <div class="review-author">— Carolyn S., Fundraising Gala 2024</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <div class="review-text">
-                        "If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"
-                    </div>
+                    <div class="review-text">"If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"</div>
                     <div class="review-author">— Tom & Angela, Wedding 2023</div>
                 </div>
             </div>
@@ -1411,9 +1344,7 @@
                 <button type="submit">Send Message</button>
             </form>
             <div style="margin-top: 2rem; text-align: center;">
-                <a href="https://www.gigsalad.com/the_covernotes_oakville" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 1.1rem;">
-                    View us on GigSalad →
-                </a>
+                <a href="https://www.gigsalad.com/the_covernotes_oakville" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 1.1rem;">View us on GigSalad →</a>
             </div>
         </div>
     </section>
@@ -1427,7 +1358,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Email: <a href="/cdn-cgi/l/email-protection#e78e898188a7938f8284889182958988938294c98486"><span class="__cf_email__" data-cfemail="6900070f06291d010c0a061f0c1b07061d0c1a470a08">[email&#160;protected]</span></a></p>
+                <p>Email: <a href="mailto:info@thecovernotes.ca">info@thecovernotes.ca</a></p>
                 <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
             </div>
             <div class="footer-section">
@@ -1447,11 +1378,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 The Covernotes. All rights reserved.</p>
+            <p>© 2026 The Covernotes. All rights reserved.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobileMenu');
         const navLinks = document.getElementById('navLinks');
@@ -1483,9 +1414,54 @@
         
         setInterval(nextSlide, 3000);
         
+        // Gallery Carousel
+        let currentGallery = 0;
+        const galleryWrapper = document.getElementById('galleryWrapper');
+        const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
+        const totalGallery = galleryItems.length;
+        
+        function moveGallery(direction) {
+            currentGallery += direction;
+            if (currentGallery < 0) currentGallery = totalGallery - 1;
+            if (currentGallery >= totalGallery) currentGallery = 0;
+            
+            const gapPx = parseFloat(getComputedStyle(galleryWrapper).gap) || 32;
+            const itemWidth = galleryItems[0] ? galleryItems[0].offsetWidth : 0;
+            const offset = (itemWidth + gapPx) * currentGallery;
+            galleryWrapper.style.transform = `translateX(-${offset}px)`;
+        }
+        
+        // Initial + resize handling
+        moveGallery(0);
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                currentGallery = 0;
+                moveGallery(0);
+            }, 300);
+        });
+        setInterval(() => moveGallery(1), 2000);
+        
+        // Reviews Carousel
+        let currentReview = 0;
+        const reviewsWrapper = document.getElementById('reviewsWrapper');
+        const totalReviews = document.querySelectorAll('.review-card').length;
+        
+        function moveReview(direction) {
+            currentReview += direction;
+            if (currentReview < 0) currentReview = totalReviews - 1;
+            if (currentReview >= totalReviews) currentReview = 0;
+            
+            const visible = window.innerWidth <= 768 ? 1 : 3;
+            const step = 100 / visible;
+            reviewsWrapper.style.transform = `translateX(-${currentReview * step}%)`;
+        }
+        
+        setInterval(() => moveReview(1), 2000);
+        
         // Gallery Lightbox
         let currentImageIndex = 0;
-        const images = document.querySelectorAll('.gallery-item');
         
         function openLightbox(index) {
             currentImageIndex = index;
@@ -1493,8 +1469,8 @@
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
             
-            lightboxImg.src = images[index].src;
-            lightboxCaption.textContent = images[index].alt;
+            lightboxImg.src = galleryItems[index].querySelector('img').src;
+            lightboxCaption.textContent = galleryItems[index].querySelector('img').alt;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1506,58 +1482,29 @@
         }
         
         function closeLightboxOnBackground(event) {
-            if (event.target.id === 'lightbox') {
-                closeLightbox();
-            }
+            if (event.target.id === 'lightbox') closeLightbox();
         }
         
         function changeImage(direction) {
             currentImageIndex += direction;
-            
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            }
+            if (currentImageIndex >= totalGallery) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = totalGallery - 1;
             
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
             
-            lightboxImg.src = images[currentImageIndex].src;
-            lightboxCaption.textContent = images[currentImageIndex].alt;
+            lightboxImg.src = galleryItems[currentImageIndex].querySelector('img').src;
+            lightboxCaption.textContent = galleryItems[currentImageIndex].querySelector('img').alt;
         }
         
         document.addEventListener('keydown', (e) => {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.classList.contains('active')) {
-                if (e.key === 'ArrowLeft') {
-                    changeImage(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeImage(1);
-                } else if (e.key === 'Escape') {
-                    closeLightbox();
-                }
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                else if (e.key === 'ArrowRight') changeImage(1);
+                else if (e.key === 'Escape') closeLightbox();
             }
         });
-        
-        // Reviews Carousel
-        let currentReview = 0;
-        const reviewsWrapper = document.getElementById('reviewsWrapper');
-        const totalReviews = 9;
-        
-        function moveReview(direction) {
-            currentReview += direction;
-            
-            if (currentReview < 0) {
-                currentReview = totalReviews - 1;
-            } else if (currentReview >= totalReviews) {
-                currentReview = 0;
-            }
-            
-            reviewsWrapper.style.transform = `translateX(-${currentReview * 100}%)`;
-        }
-        
-        setInterval(() => moveReview(1), 8000);
         
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1565,19 +1512,12 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offset = 80;
-                    const targetPosition = target.offsetTop - offset;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    const offset = 90;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                 }
             });
         });
-        
-        // Date input formatting (display month as Jan, Feb, etc.)
-        const dateInput = document.getElementById('eventdate');
-        dateInput.addEventListener('change', function(e) {
-            const date = new Date(this.value);
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+    </script>
+</body>
+</html>
