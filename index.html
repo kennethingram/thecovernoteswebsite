@@ -648,7 +648,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-bottom: 1.5rem;
         }
@@ -767,32 +767,34 @@
         }
         
         /* Footer Logo Styling */
-        .footer-logo-img {
-            width: 100px;            /* Size to match your design */
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;     /* Keeps it circular like your favicon */
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            display: block;
-        }
-        
-        /* Desktop: Forces 4 columns on larger screens */
-        @media (min-width: 769px) {
-            .footer-grid {
-                grid-template-columns: repeat(4, 1fr) !important; 
-                gap: 2rem;
-            }
-        }
-        
-        /* Mobile: Centers the logo at the very bottom */
-        @media (max-width: 768px) {
             .footer-logo-col {
                 display: flex;
-                justify-content: center;
-                margin-top: 2rem;
-                width: 100%;
+                justify-content: flex-end;  /* Aligns logo to the right on desktop */
+                align-items: flex-start;
             }
-        }
+            
+            .footer-logo-img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 2px solid rgba(255, 255, 255, 0.1);
+                display: block;
+            }
+            
+            /* Mobile: Centers the logo at the very bottom */
+            @media (max-width: 768px) {
+                .footer-content {
+                    grid-template-columns: 1fr;  /* Stacks all sections vertically */
+                }
+                
+                .footer-logo-col {
+                    order: 999;  /* Forces logo to appear last/bottom */
+                    justify-content: center;  /* Centers logo on mobile */
+                    margin-top: 2rem;
+                    width: 100%;
+                }
+            }
         
         html {
             scroll-behavior: smooth;
