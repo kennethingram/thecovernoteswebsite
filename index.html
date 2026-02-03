@@ -6,12 +6,12 @@
     <title>The Covernotes | Live Party and Events Cover Band | Ontario, Canada</title>
     <meta name="description" content="The Covernotes - Premier live party and events band in Ontario, Canada. Book us for your next event!">
     <link rel="icon" type="image/jpeg" href="images/covernoteslogo.jpg">
-    
+   
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+   
     <style>
         :root {
             --primary: #000000;
@@ -19,13 +19,13 @@
             --accent: #ff3366;
             --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
         }
-        
+       
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+       
         body {
             font-family: 'Outfit', sans-serif;
             background: var(--bg-gradient);
@@ -33,7 +33,7 @@
             line-height: 1.5;
             overflow-x: hidden;
         }
-        
+       
         nav {
             position: fixed;
             top: 0;
@@ -43,7 +43,7 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+       
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -52,7 +52,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+       
         .logo {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.5rem;
@@ -63,21 +63,21 @@
             align-items: center;
             gap: 0.8rem;
         }
-        
+       
         .logo-icon {
             width: 35px;
             height: 35px;
-            object-fit: cover;     /* ⭐ prevents image distortion */
-            border-radius: 50%;    /* ⭐ makes it a circle */
-            display: block;        /* removes inline image spacing */
+            object-fit: cover; /* prevents image distortion */
+            border-radius: 50%; /* makes it a circle */
+            display: block; /* removes inline image spacing */
         }
-        
+       
         .nav-links {
             display: flex;
             gap: 1.8rem;
             list-style: none;
         }
-        
+       
         .nav-links a {
             color: var(--secondary);
             text-decoration: none;
@@ -87,25 +87,25 @@
             letter-spacing: 1px;
             transition: color 0.3s ease;
         }
-        
+       
         .nav-links a:hover {
             color: var(--accent);
         }
-        
+       
         .mobile-menu {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
         }
-        
+       
         .mobile-menu span {
             width: 25px;
             height: 2px;
             background: var(--secondary);
             transition: 0.3s;
         }
-        
+       
         .hero {
             min-height: 100vh;
             display: flex;
@@ -116,18 +116,18 @@
             position: relative;
             overflow: hidden;
         }
-        
+       
         .hero-carousel {
             position: absolute;
             top: 0;
-            left: 50%;                 /* ⭐ CENTER it */
-            transform: translateX(-50%); /* ⭐ keeps it centered */
+            left: 50%; /* CENTER it */
+            transform: translateX(-50%); /* keeps it centered */
             width: 100%;
-            max-width: 1400px;         /* ⭐ MATCHES SITE WIDTH */
+            max-width: 1400px; /* MATCHES SITE WIDTH */
             height: 100%;
             z-index: 0;
         }
-        
+       
         .hero-slide {
             position: absolute;
             top: 0;
@@ -137,25 +137,25 @@
             opacity: 0;
             transition: opacity 1s ease-in-out; /* smoother crossfade */
         }
-        
+       
         .hero-slide.active {
             opacity: 1;
         }
-        
-        /* 🔥 KEY FIX IS HERE */
+       
+        /* KEY FIX IS HERE */
         .hero-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        
-            transform: scale(1);                  /* base state */
+       
+            transform: scale(1); /* base state */
             transition: transform 3s ease-in-out; /* replaces keyframe animation */
         }
-        
+       
         .hero-slide.active img {
             transform: scale(1.1); /* zooms while slide is active */
         }
-        
+       
         .hero::after {
             content: '';
             position: absolute;
@@ -166,18 +166,18 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
-        
+       
         .hero-content {
             position: relative;
             z-index: 2;
             animation: fadeInUp 3s ease-out;
         }
-        
+       
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+       
         .hero h1 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 10vw, 8rem);
@@ -187,7 +187,7 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
             display: inline-block;
         }
-        
+       
         .hero p {
             font-size: clamp(1.2rem, 3vw, 2rem);
             font-weight: 300;
@@ -196,14 +196,14 @@
             opacity: 0.9;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
-        
+       
         .social-icons {
             display: flex;
             gap: 1.2rem;
             justify-content: center;
             margin-top: 1rem;
         }
-        
+       
         .social-icons a {
             width: 45px;
             height: 45px;
@@ -217,27 +217,27 @@
             transition: all 0.3s ease;
             font-size: 1.1rem;
         }
-        
+       
         .social-icons a:hover {
             background: var(--accent);
             border-color: var(--accent);
             transform: scale(1.1);
         }
-        
+       
         .section-divider {
             max-width: 1400px;
             margin: 0 auto;
             height: 1px;
             background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
         }
-        
+       
         section {
             padding: 2rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
             scroll-margin-top: 90px;
         }
-        
+       
         section h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
@@ -245,7 +245,7 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-        
+       
         .about-content {
             max-width: 900px;
             margin: 0 auto;
@@ -254,11 +254,11 @@
             font-weight: 300;
             line-height: 1.7;
         }
-        
+       
         .about-content p {
             margin-bottom: 1.2rem;
         }
-        
+       
         .about-cta {
             display: flex;
             gap: 1.5rem;
@@ -266,7 +266,7 @@
             margin-top: 2rem;
             flex-wrap: wrap;
         }
-        
+       
         .cta-button {
             padding: 0.9rem 2.2rem;
             background: var(--accent);
@@ -278,40 +278,28 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-        
+       
         .cta-button:hover {
             background: #ff1a4d;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 51, 102, 0.25);
         }
-        
-        .showreels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        
-        .showreels-grid iframe {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+       
+        /* Removed .showreels-grid styles as we're replacing with carousel */
+       
         .gallery-carousel {
             position: relative;
             max-width: 1400px;
             margin: 1.5rem auto;
             overflow: hidden;
         }
-        
+       
         .gallery-wrapper {
             display: flex;
             gap: 2rem;
             transition: transform 0.6s ease;
         }
-        
+       
         .gallery-item-wrapper {
             flex: 0 0 calc((100% - 4rem) / 3);
             position: relative;
@@ -321,12 +309,12 @@
             transition: all 0.3s ease;
             aspect-ratio: 1;
         }
-        
+       
         .gallery-item-wrapper:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(255, 51, 102, 0.3);
         }
-        
+       
         .gallery-item-wrapper::before {
             content: '';
             position: absolute;
@@ -339,11 +327,11 @@
             transition: opacity 0.3s ease;
             z-index: 1;
         }
-        
+       
         .gallery-item-wrapper:hover::before {
             opacity: 1;
         }
-        
+       
         .gallery-item {
             width: 100%;
             height: 100%;
@@ -352,7 +340,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
         }
-        
+       
         .lightbox {
             display: none;
             position: fixed;
@@ -366,16 +354,16 @@
             justify-content: center;
             animation: fadeIn 0.3s ease;
         }
-        
+       
         .lightbox.active {
             display: flex;
         }
-        
+       
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+       
         .lightbox-content {
             position: relative;
             max-width: 85%;
@@ -384,14 +372,14 @@
             flex-direction: column;
             align-items: center;
         }
-        
+       
         .lightbox-image {
             max-width: 100%;
             max-height: 75vh;
             object-fit: contain;
             border-radius: 4px;
         }
-        
+       
         .lightbox-caption {
             color: var(--secondary);
             margin-top: 0.8rem;
@@ -399,7 +387,7 @@
             text-align: center;
             font-weight: 300;
         }
-        
+       
         .lightbox-close {
             position: absolute;
             top: 15px;
@@ -418,13 +406,13 @@
             transition: all 0.3s ease;
             z-index: 2001;
         }
-        
+       
         .lightbox-close:hover {
             background: var(--accent);
             border-color: var(--accent);
             transform: rotate(90deg);
         }
-        
+       
         .lightbox-prev,
         .lightbox-next {
             position: absolute;
@@ -444,16 +432,16 @@
             z-index: 2001;
             transition: all 0.3s ease;
         }
-        
+       
         .lightbox-prev:hover,
         .lightbox-next:hover {
             background: var(--accent);
             border-color: var(--accent);
         }
-        
+       
         .lightbox-prev { left: 15px; }
         .lightbox-next { right: 15px; }
-        
+       
         .setlist-intro {
             max-width: 900px;
             margin: 0 auto 1.5rem;
@@ -462,14 +450,14 @@
             font-weight: 300;
             line-height: 1.6;
         }
-        
+       
         .setlist-columns {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
-        
+       
         .setlist-category h3 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.7rem;
@@ -477,44 +465,44 @@
             margin-bottom: 0.5rem;
             color: var(--accent);
         }
-        
+       
         .setlist-category ul {
             list-style: none;
         }
-        
+       
         .setlist-category li {
             padding: 0.1rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             font-weight: 300;
             font-size: 0.9rem;
         }
-        
+       
         .reviews-carousel {
             position: relative;
             max-width: 1400px;
             margin: 1.5rem auto;
             overflow: hidden;
         }
-        
+       
         .reviews-wrapper {
             display: flex;
             transition: transform 0.6s ease;
         }
-        
+       
         .review-card {
             flex: 0 0 calc(100% / 3);
             padding: 1.5rem;
             text-align: center;
             flex-shrink: 0;
         }
-        
+       
         .review-stars {
             font-size: 1.4rem;
             color: #ffd700;
             margin-bottom: 1rem;
             letter-spacing: 0.2rem;
         }
-        
+       
         .review-text {
             font-size: 1rem;
             font-style: italic;
@@ -522,20 +510,54 @@
             margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.9);
         }
-        
+       
         .review-author {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--accent);
         }
-        
+       
+        /* New Showreels Carousel Styles */
+        .showreels-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 1.5rem auto;
+            overflow: hidden;
+        }
+       
+        .showreels-wrapper {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+       
+        .showreel-card {
+            flex: 0 0 100%;
+        }
+       
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+       
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+       
         .carousel-nav {
             display: flex;
             gap: 1rem;
             justify-content: center;
             margin-top: 1.5rem;
         }
-        
+       
         .carousel-nav button {
             width: 38px;
             height: 38px;
@@ -547,28 +569,28 @@
             transition: all 0.3s ease;
             font-size: 1.1rem;
         }
-        
+       
         .carousel-nav button:hover {
             background: var(--accent);
             border-color: var(--accent);
         }
-        
+       
         .contact-container {
             max-width: 700px;
             margin: 0 auto;
         }
-        
+       
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.7rem;
             margin-bottom: 0.8rem;
         }
-        
+       
         .form-group {
             margin-bottom: 0.8rem;
         }
-        
+       
         .form-group label {
             display: block;
             margin-bottom: 0.2rem;
@@ -577,12 +599,12 @@
             text-transform: uppercase;
             font-size: 0.8rem;
         }
-        
+       
         .form-group label.required::after {
             content: ' *';
             color: var(--accent);
         }
-        
+       
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -596,14 +618,14 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             /* Forces identical height across all browsers */
-            height: 54px; 
+            height: 54px;
             line-height: 1.2;
-            
+           
             /* Removes default mobile system styling/borders */
             appearance: none;
             -webkit-appearance: none;
         }
-        
+       
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
@@ -611,12 +633,12 @@
             border-color: var(--accent);
             background: rgba(255, 255, 255, 0.08);
         }
-        
+       
         .form-group textarea {
             resize: vertical;
             min-height: 100px;
         }
-        
+       
         button[type="submit"] {
             background: var(--accent);
             color: var(--secondary);
@@ -631,19 +653,19 @@
             width: 100%;
             margin-top: 0.8rem;
         }
-        
+       
         button[type="submit"]:hover {
             background: #ff1a4d;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 51, 102, 0.25);
         }
-        
+       
         footer {
             background: rgba(0, 0, 0, 0.95);
             padding: 2.5rem 2rem 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+       
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -652,7 +674,7 @@
             gap: 2rem;
             margin-bottom: 1.5rem;
         }
-        
+       
         .footer-section h3 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.4rem;
@@ -660,7 +682,7 @@
             margin-bottom: 0.8rem;
             color: var(--accent);
         }
-        
+       
         .footer-section p,
         .footer-section a {
             color: rgba(255, 255, 255, 0.7);
@@ -668,17 +690,17 @@
             font-size: 0.9rem;
             line-height: 1.6;
         }
-        
+       
         .footer-section a:hover {
             color: var(--accent);
         }
-        
+       
         .footer-social {
             display: flex;
             gap: 0.8rem;
             margin-top: 0.8rem;
         }
-        
+       
         .footer-social a {
             width: 38px;
             height: 38px;
@@ -689,12 +711,12 @@
             border-radius: 50%;
             transition: all 0.3s ease;
         }
-        
+       
         .footer-social a:hover {
             border-color: var(--accent);
             background: var(--accent);
         }
-        
+       
         .footer-bottom {
             text-align: center;
             padding-top: 1.5rem;
@@ -702,22 +724,22 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.85rem;
         }
-        
+       
         @media (max-width: 1200px) {
             .gallery-item-wrapper {
                 flex: 0 0 calc((100% - 2rem) / 2);
             }
         }
-        
+       
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
+           
             .mobile-menu {
                 display: flex;
             }
-            
+           
             .nav-links.active {
                 display: flex;
                 flex-direction: column;
@@ -729,50 +751,69 @@
                 padding: 1.5rem;
                 gap: 1.2rem;
             }
-            
-            .showreels-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .setlist-columns {
-                grid-template-columns: 1fr;
-            }
-            
+           
             .gallery-item-wrapper {
                 flex: 0 0 100%;
             }
-            
+           
             .review-card {
                 flex: 0 0 100%;
             }
-            
+           
             .hero h1 {
                 font-size: clamp(3.5rem, 12vw, 7rem);
                 white-space: nowrap;
             }
-            
+           
             .about-cta {
                 flex-direction: column;
                 align-items: center;
             }
-            
+           
             .cta-button {
                 width: 100%;
                 max-width: 280px;
             }
-            
+           
             .form-row {
                 grid-template-columns: 1fr;
             }
         }
-        
-            /* Footer Logo Styling */
-            .footer-logo-col {
-                display: flex;
-                justify-content: flex-end;  /* Aligns logo to the right on desktop */
-                align-items: flex-start;
+       
+        /* Footer Logo Styling */
+        .footer-logo-col {
+            display: flex;
+            justify-content: flex-end; /* Aligns logo to the right on desktop */
+            align-items: flex-start;
+        }
+       
+        .footer-logo-img {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            min-height: 100px;
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: block;
+            flex-shrink: 0; /* Prevents the image from shrinking */
+        }
+       
+        /* Mobile: Centers the logo at the very bottom */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr; /* Stacks all sections vertically */
             }
-            
+           
+            .footer-logo-col {
+                order: 999; /* Forces logo to appear last/bottom */
+                justify-content: center; /* Centers logo on mobile */
+                margin-top: 2rem;
+                width: 100%;
+            }
+           
             .footer-logo-img {
                 width: 100px;
                 height: 100px;
@@ -780,40 +821,13 @@
                 min-height: 100px;
                 max-width: 100px;
                 max-height: 100px;
-                object-fit: cover;
-                border-radius: 50%;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-                display: block;
-                flex-shrink: 0;  /* Prevents the image from shrinking */
             }
-            
-            /* Mobile: Centers the logo at the very bottom */
-            @media (max-width: 768px) {
-                .footer-content {
-                    grid-template-columns: 1fr;  /* Stacks all sections vertically */
-                }
-                
-                .footer-logo-col {
-                    order: 999;  /* Forces logo to appear last/bottom */
-                    justify-content: center;  /* Centers logo on mobile */
-                    margin-top: 2rem;
-                    width: 100%;
-                }
-                
-                .footer-logo-img {
-                    width: 100px;
-                    height: 100px;
-                    min-width: 100px;
-                    min-height: 100px;
-                    max-width: 100px;
-                    max-height: 100px;
-                }
-            }
-        
+        }
+       
         html {
             scroll-behavior: smooth;
         }
-        
+       
     </style>
 </head>
 <body>
@@ -821,7 +835,7 @@
     <nav>
         <div class="nav-container">
             <a href="#home" class="logo">
-                <img src="images/covernoteslogo.jpg" alt="The Covernotes Logo" class="logo-icon">    
+                <img src="images/covernoteslogo.jpg" alt="The Covernotes Logo" class="logo-icon">
                 THE COVERNOTES
             </a>
             <ul class="nav-links" id="navLinks">
@@ -840,7 +854,6 @@
             </div>
         </div>
     </nav>
-
     <!-- Hero Section with Carousel -->
     <section id="home" class="hero">
         <div class="hero-carousel" id="heroCarousel">
@@ -877,9 +890,7 @@
             </div>
         </div>
     </section>
-
     <div class="section-divider"></div>
-
     <!-- About Section -->
     <section id="about">
         <h2>ABOUT US</h2>
@@ -893,23 +904,35 @@
             </div>
         </div>
     </section>
-
     <div class="section-divider"></div>
-
     <!-- Showreels Section -->
     <section id="showreels">
         <h2>SHOWREELS</h2>
-        <div class="showreels-grid">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UAmWV9nk6Yw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <!--
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/yfEIqsvBN0s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/xuNeyzvruLg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        -->
+        <div class="showreels-carousel" id="showreelsCarousel">
+            <div class="showreels-wrapper" id="showreelsWrapper">
+                <div class="showreel-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/UAmWV9nk6Yw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="showreel-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/yfEIqsvBN0s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="showreel-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/xuNeyzvruLg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button onclick="moveShowreel(-1)" aria-label="Previous showreel">‹</button>
+                <button onclick="moveShowreel(1)" aria-label="Next showreel">›</button>
+            </div>
         </div>
     </section>
-
     <div class="section-divider"></div>
-
     <!-- Gallery Section -->
     <section id="gallery">
         <h2>GALLERY</h2>
@@ -946,7 +969,6 @@
             </div>
         </div>
     </section>
-
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" onclick="closeLightboxOnBackground(event)">
         <div class="lightbox-close" onclick="closeLightbox()">×</div>
@@ -957,9 +979,7 @@
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
     </div>
-
     <div class="section-divider"></div>
-
     <!-- Reviews Section -->
     <section id="reviews">
         <h2>REVIEWS</h2>
@@ -1017,9 +1037,8 @@
             </div>
         </div>
     </section>
-
     <div class="section-divider"></div>
-    
+   
     <!-- Set List Section -->
     <section id="setlist">
         <h2>SET LIST</h2>
@@ -1027,7 +1046,7 @@
             <p>We have an extensive set list and are well experienced in managing the set list either live or we can work with you to develop the best set arrangement, including specific songs for your event. We include background / iPad music during breaks as standard.</p>
             <p style="margin-top: 1.5rem;">Example set times as standard cover 3 hours on site and we are flexible with no fuss in the arrangements. Some standard examples are 2x 60 minutes with a 20 min break or 3x 40 minutes with 15 min breaks. On average a set of 1 hour would cover 16-19 songs.</p>
         </div>
-        
+       
         <!-- Pop Hits -->
         <div class="setlist-columns">
             <div class="setlist-category">
@@ -1044,8 +1063,8 @@
                     <li>Don't Start Now - Dua Lipa</li>
                     <li>Dynamite - Taio Cruz</li>
                     <li>Forget You - CeeLo Green</li>
-                    <li>Get Lucky - Daft Punk ft. Pharrell Williams</li>
-                    <li>Happy - Pharrell Williams</li>
+                    <li>Get Lucky - Daft Punk ft. Pharell Williams</li>
+                    <li>Happy - Pharell Williams</li>
                     <li>Hero - Enrique Iglesias</li>
                     <li>How Will I Know - Whitney Houston</li>
                     <li>I Feel Good - James Brown</li>
@@ -1059,7 +1078,7 @@
                 </ul>
             </div>
             <div class="setlist-category">
-                <h3>&nbsp;</h3>
+                <h3> </h3>
                 <ul>
                     <li>Like a Prayer - Madonna</li>
                     <li>Little L - Jamiroquai</li>
@@ -1086,7 +1105,7 @@
                 </ul>
             </div>
         </div>
-        
+       
         <!-- Rock -->
         <div class="setlist-columns">
             <div class="setlist-category">
@@ -1107,7 +1126,7 @@
                 </ul>
             </div>
             <div class="setlist-category">
-                <h3>&nbsp;</h3>
+                <h3> </h3>
                 <ul>
                     <li>I Saw Her Standing There - The Beatles</li>
                     <li>I Want to Break Free - Queen</li>
@@ -1124,7 +1143,7 @@
                 </ul>
             </div>
         </div>
-        
+       
         <!-- Motown, Soul & R&B -->
         <div class="setlist-columns">
             <div class="setlist-category">
@@ -1147,7 +1166,7 @@
                 </ul>
             </div>
             <div class="setlist-category">
-                <h3>&nbsp;</h3>
+                <h3> </h3>
                 <ul>
                     <li>Let's Stay Together - Al Green</li>
                     <li>Man in the Mirror - Michael Jackson</li>
@@ -1165,7 +1184,6 @@
                 </ul>
             </div>
         </div>
-
         <!-- Classic Rock & Roll + Latin -->
         <div class="setlist-columns">
             <div class="setlist-category">
@@ -1195,7 +1213,6 @@
                 </ul>
             </div>
         </div>
-
         <!-- Reggae + Hip Hop & Rap -->
         <div class="setlist-columns">
             <div class="setlist-category">
@@ -1226,7 +1243,6 @@
                 </ul>
             </div>
         </div>
-
         <!-- Christmas Classics + Halloween Classics -->
         <div class="setlist-columns">
             <div class="setlist-category">
@@ -1264,9 +1280,7 @@
             </div>
         </div>
     </section>
-
     <div class="section-divider"></div>
-
     <!-- Contact Section -->
     <section id="contact">
         <h2>CONTACT</h2>
@@ -1340,7 +1354,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1367,127 +1380,141 @@
                         </svg>
                     </a>
                 </div>
-                
+               
             </div>
             <!-- footer logo -->
             <div class="footer-col footer-logo-col">
                 <img src="images/covernoteslogo.jpg" alt="The Covernotes Logo" class="footer-logo-img">
             </div>
-        
+       
         </div>
         <div class="footer-bottom">
             <p>© 2026 The Covernotes. All rights reserved.</p>
         </div>
     </footer>
-
     <script>
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobileMenu');
         const navLinks = document.getElementById('navLinks');
-        
+       
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-        
+       
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
-        
+       
         // Hero Carousel - 3s change + 3s zoom to 10%
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const totalSlides = slides.length;
-        
+       
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
         }
-        
+       
         function nextSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             showSlide(currentSlide);
         }
-        
+       
         setInterval(nextSlide, 3000);
-        
+       
         // Gallery Carousel - 3s auto, seamless cycle
         let currentGallery = 0;
         const galleryWrapper = document.getElementById('galleryWrapper');
         const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
         const totalGallery = galleryItems.length;
-        
+       
         function moveGallery(direction) {
             currentGallery += direction;
             if (currentGallery < 0) currentGallery = totalGallery - 1;
             if (currentGallery >= totalGallery) currentGallery = 0;
-            
+           
             const gapPx = parseFloat(getComputedStyle(galleryWrapper).gap) || 32;
             const itemWidth = galleryItems[0] ? galleryItems[0].offsetWidth : 0;
             const offset = (itemWidth + gapPx) * currentGallery;
             galleryWrapper.style.transform = `translateX(-${offset}px)`;
         }
-        
+       
         moveGallery(0);
         setInterval(() => moveGallery(1), 3000);
-        
+       
         // Reviews Carousel - 3s auto, seamless cycle
         let currentReview = 0;
         const reviewsWrapper = document.getElementById('reviewsWrapper');
         const totalReviews = document.querySelectorAll('.review-card').length;
-        
+       
         function moveReview(direction) {
             currentReview += direction;
             if (currentReview < 0) currentReview = totalReviews - 1;
             if (currentReview >= totalReviews) currentReview = 0;
-            
+           
             const visible = window.innerWidth <= 768 ? 1 : 3;
             const step = 100 / visible;
             reviewsWrapper.style.transform = `translateX(-${currentReview * step}%)`;
         }
-        
+       
         setInterval(() => moveReview(1), 3000);
-        
+       
+        // Showreels Carousel - manual only, always 1 item visible
+        let currentShowreel = 0;
+        const showreelsWrapper = document.getElementById('showreelsWrapper');
+        const totalShowreels = document.querySelectorAll('.showreel-card').length;
+       
+        function moveShowreel(direction) {
+            currentShowreel += direction;
+            if (currentShowreel < 0) currentShowreel = totalShowreels - 1;
+            if (currentShowreel >= totalShowreels) currentShowreel = 0;
+           
+            showreelsWrapper.style.transform = `translateX(-${currentShowreel * 100}%)`;
+        }
+       
+        moveShowreel(0); // Initialize position
+       
         // Gallery Lightbox
         let currentImageIndex = 0;
-        
+       
         function openLightbox(index) {
             currentImageIndex = index;
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
-            
+           
             lightboxImg.src = galleryItems[index].querySelector('img').src;
             lightboxCaption.textContent = galleryItems[index].querySelector('img').alt;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+       
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
+       
         function closeLightboxOnBackground(event) {
             if (event.target.id === 'lightbox') {
                 closeLightbox();
             }
         }
-        
+       
         function changeImage(direction) {
             currentImageIndex += direction;
             if (currentImageIndex >= totalGallery) currentImageIndex = 0;
             if (currentImageIndex < 0) currentImageIndex = totalGallery - 1;
-            
+           
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
-            
+           
             lightboxImg.src = galleryItems[currentImageIndex].querySelector('img').src;
             lightboxCaption.textContent = galleryItems[currentImageIndex].querySelector('img').alt;
         }
-        
+       
         document.addEventListener('keydown', (e) => {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.classList.contains('active')) {
@@ -1496,7 +1523,7 @@
                 else if (e.key === 'Escape') closeLightbox();
             }
         });
-        
+       
         // Smooth scroll with offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
