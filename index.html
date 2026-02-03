@@ -1332,6 +1332,7 @@
                     <div class="form-group">
                         <label for="eventdate" class="required">Event Date</label>
                         <input type="date" id="eventdate" name="eventdate" required>
+                        <span id="eventdate-display" style="margin-left: 12px; font-weight: 600; color: var(--accent); font-size: 1rem;"></span>
                     </div>
                 </div>
                 <div class="form-row">
@@ -1425,7 +1426,25 @@
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-       
+
+        // Format Event Date display: YYYY-MMM-DD (e.g., 2026-FEB-20)
+            const eventDateInput = document.getElementById('eventdate');
+            const eventDateDisplay = document.getElementById('eventdate-display');
+            
+            if (eventDateInput && eventDateDisplay) {
+                eventDateInput.addEventListener('change', function() {
+                    if (this.value) {
+                        const date = new Date(this.value);
+                        const year = date.getFullYear();
+                        const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+                        const day = String(date.getDate()).padStart(2, '0');
+                        eventDateDisplay.textContent = `${year}-${month}-${day}`;
+                    } else {
+                        eventDateDisplay.textContent = '';
+                    }
+                });
+            }
+        
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
