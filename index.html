@@ -1609,7 +1609,7 @@
         }
        
         moveGallery(0);
-        let galleryAutoRotate = setInterval(() => moveGallery(1), 5000);
+        let galleryAutoRotate = setInterval(() => moveGallery(1), 9000);
         
         // Enhanced Touch/Swipe with drag feedback for Gallery
         let galleryTouchStartX = 0;
@@ -1667,7 +1667,7 @@
             }
             
             // Restart auto-rotate
-            galleryAutoRotate = setInterval(() => moveGallery(1), 5000);
+            galleryAutoRotate = setInterval(() => moveGallery(1), 9000);
         }, { passive: true });
        
         // Reviews Carousel - 5s auto, seamless cycle
@@ -1687,7 +1687,7 @@
             reviewsWrapper.style.transform = `translateX(-${currentReview * step}%)`;
         }
        
-        let reviewAutoRotate = setInterval(() => moveReview(1), 5000);
+        let reviewAutoRotate = setInterval(() => moveReview(1), 9000);
         
         // Enhanced Touch/Swipe with drag feedback for Reviews
         let reviewTouchStartX = 0;
@@ -1747,7 +1747,7 @@
             }
             
             // Restart auto-rotate
-            reviewAutoRotate = setInterval(() => moveReview(1), 5000);
+            reviewAutoRotate = setInterval(() => moveReview(1), 9000);
         }, { passive: true });
        
         // Showreels Carousel - manual only, always 1 item visible
