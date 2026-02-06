@@ -1,0 +1,11 @@
+# robots.txt for The Covernotes website
+# https://www.thecovernotes.ca
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.thecovernotes.ca/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
