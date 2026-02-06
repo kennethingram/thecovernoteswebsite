@@ -1565,6 +1565,31 @@
        
         moveGallery(0);
         setInterval(() => moveGallery(1), 5000);
+        
+        // Touch/Swipe support for Gallery
+        let galleryTouchStartX = 0;
+        let galleryTouchEndX = 0;
+        
+        galleryWrapper.addEventListener('touchstart', (e) => {
+            galleryTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        galleryWrapper.addEventListener('touchend', (e) => {
+            galleryTouchEndX = e.changedTouches[0].screenX;
+            handleGallerySwipe();
+        }, { passive: true });
+        
+        function handleGallerySwipe() {
+            const swipeThreshold = 50;
+            if (galleryTouchStartX - galleryTouchEndX > swipeThreshold) {
+                // Swipe left - next image
+                moveGallery(1);
+            }
+            if (galleryTouchEndX - galleryTouchStartX > swipeThreshold) {
+                // Swipe right - previous image
+                moveGallery(-1);
+            }
+        }
        
         // Reviews Carousel - 5s auto, seamless cycle
         let currentReview = 0;
@@ -1583,6 +1608,31 @@
         }
        
         setInterval(() => moveReview(1), 5000);
+        
+        // Touch/Swipe support for Reviews
+        let reviewTouchStartX = 0;
+        let reviewTouchEndX = 0;
+        
+        reviewsWrapper.addEventListener('touchstart', (e) => {
+            reviewTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        reviewsWrapper.addEventListener('touchend', (e) => {
+            reviewTouchEndX = e.changedTouches[0].screenX;
+            handleReviewSwipe();
+        }, { passive: true });
+        
+        function handleReviewSwipe() {
+            const swipeThreshold = 50;
+            if (reviewTouchStartX - reviewTouchEndX > swipeThreshold) {
+                // Swipe left - next review
+                moveReview(1);
+            }
+            if (reviewTouchEndX - reviewTouchStartX > swipeThreshold) {
+                // Swipe right - previous review
+                moveReview(-1);
+            }
+        }
        
         // Showreels Carousel - manual only, always 1 item visible
         let currentShowreel = 0;
@@ -1599,6 +1649,31 @@
         }
        
         moveShowreel(0); // Initialize position
+        
+        // Touch/Swipe support for Showreels
+        let showreelTouchStartX = 0;
+        let showreelTouchEndX = 0;
+        
+        showreelsWrapper.addEventListener('touchstart', (e) => {
+            showreelTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        showreelsWrapper.addEventListener('touchend', (e) => {
+            showreelTouchEndX = e.changedTouches[0].screenX;
+            handleShowreelSwipe();
+        }, { passive: true });
+        
+        function handleShowreelSwipe() {
+            const swipeThreshold = 50;
+            if (showreelTouchStartX - showreelTouchEndX > swipeThreshold) {
+                // Swipe left - next showreel
+                moveShowreel(1);
+            }
+            if (showreelTouchEndX - showreelTouchStartX > swipeThreshold) {
+                // Swipe right - previous showreel
+                moveShowreel(-1);
+            }
+        }
        
         // Gallery Lightbox
         let currentImageIndex = 0;
