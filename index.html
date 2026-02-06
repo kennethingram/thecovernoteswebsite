@@ -1013,7 +1013,7 @@
     <!-- Gallery Section -->
     <section id="gallery">
         <h2>GALLERY</h2>
-        <div class="gallery-carousel">
+        <div class="gallery-carousel" id="galleryCarousel">
             <div class="gallery-wrapper" id="galleryWrapper">
                 <div class="gallery-item-wrapper" onclick="openLightbox(0)">
                     <img src="images/Outdoor 3 Piece Front Full Band on Amphitheatre.JPG" alt="The Covernotes performing live at outdoor festival amphitheatre in Ontario" class="gallery-item" style="object-position: center;" loading="lazy">
@@ -1547,6 +1547,7 @@
        
         // Gallery Carousel - 5s auto, seamless cycle
         let currentGallery = 0;
+        const galleryCarousel = document.getElementById('galleryCarousel');
         const galleryWrapper = document.getElementById('galleryWrapper');
         const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
         const totalGallery = galleryItems.length;
@@ -1566,15 +1567,15 @@
         moveGallery(0);
         setInterval(() => moveGallery(1), 5000);
         
-        // Touch/Swipe support for Gallery
+        // Touch/Swipe support for Gallery - attach to carousel container
         let galleryTouchStartX = 0;
         let galleryTouchEndX = 0;
         
-        galleryWrapper.addEventListener('touchstart', (e) => {
+        galleryCarousel.addEventListener('touchstart', (e) => {
             galleryTouchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
         
-        galleryWrapper.addEventListener('touchend', (e) => {
+        galleryCarousel.addEventListener('touchend', (e) => {
             galleryTouchEndX = e.changedTouches[0].screenX;
             handleGallerySwipe();
         }, { passive: true });
@@ -1593,6 +1594,7 @@
        
         // Reviews Carousel - 5s auto, seamless cycle
         let currentReview = 0;
+        const reviewsCarousel = document.getElementById('reviewsCarousel');
         const reviewsWrapper = document.getElementById('reviewsWrapper');
         const totalReviews = document.querySelectorAll('.review-card').length;
        
@@ -1609,15 +1611,15 @@
        
         setInterval(() => moveReview(1), 5000);
         
-        // Touch/Swipe support for Reviews
+        // Touch/Swipe support for Reviews - attach to carousel container
         let reviewTouchStartX = 0;
         let reviewTouchEndX = 0;
         
-        reviewsWrapper.addEventListener('touchstart', (e) => {
+        reviewsCarousel.addEventListener('touchstart', (e) => {
             reviewTouchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
         
-        reviewsWrapper.addEventListener('touchend', (e) => {
+        reviewsCarousel.addEventListener('touchend', (e) => {
             reviewTouchEndX = e.changedTouches[0].screenX;
             handleReviewSwipe();
         }, { passive: true });
@@ -1636,6 +1638,7 @@
        
         // Showreels Carousel - manual only, always 1 item visible
         let currentShowreel = 0;
+        const showreelsCarousel = document.getElementById('showreelsCarousel');
         const showreelsWrapper = document.getElementById('showreelsWrapper');
         const totalShowreels = document.querySelectorAll('.showreel-card').length;
        
@@ -1650,15 +1653,15 @@
        
         moveShowreel(0); // Initialize position
         
-        // Touch/Swipe support for Showreels
+        // Touch/Swipe support for Showreels - attach to carousel container
         let showreelTouchStartX = 0;
         let showreelTouchEndX = 0;
         
-        showreelsWrapper.addEventListener('touchstart', (e) => {
+        showreelsCarousel.addEventListener('touchstart', (e) => {
             showreelTouchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
         
-        showreelsWrapper.addEventListener('touchend', (e) => {
+        showreelsCarousel.addEventListener('touchend', (e) => {
             showreelTouchEndX = e.changedTouches[0].screenX;
             handleShowreelSwipe();
         }, { passive: true });
