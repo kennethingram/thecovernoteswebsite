@@ -1545,7 +1545,7 @@
        
         setInterval(nextSlide, 3000);
        
-        // Gallery Carousel - 5s auto, seamless cycle
+        // Gallery Carousel - 9s auto, seamless cycle
         let currentGallery = 0;
         const galleryCarousel = document.getElementById('galleryCarousel');
         const galleryWrapper = document.getElementById('galleryWrapper');
@@ -1565,7 +1565,7 @@
         }
        
         moveGallery(0);
-        setInterval(() => moveGallery(1), 5000);
+        setInterval(() => moveGallery(1), 9000);
         
         // Touch/Swipe support for Gallery - attach to carousel container
         let galleryTouchStartX = 0;
@@ -1592,7 +1592,7 @@
             }
         }
        
-        // Reviews Carousel - 5s auto, seamless cycle
+        // Reviews Carousel - 9s auto, seamless cycle
         let currentReview = 0;
         const reviewsCarousel = document.getElementById('reviewsCarousel');
         const reviewsWrapper = document.getElementById('reviewsWrapper');
@@ -1609,7 +1609,7 @@
             reviewsWrapper.style.transform = `translateX(-${currentReview * step}%)`;
         }
        
-        setInterval(() => moveReview(1), 5000);
+        setInterval(() => moveReview(1), 9000);
         
         // Touch/Swipe support for Reviews - attach to carousel container
         let reviewTouchStartX = 0;
