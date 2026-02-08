@@ -1009,29 +1009,20 @@
             <div class="showreels-wrapper" id="showreelsWrapper">
                 <div class="showreel-card">
                     <div class="video-wrapper">
-                        <div class="video-touch-overlay" data-video-index="0"></div>
-                            <div style="padding:56.25% 0 0 0;position:relative;">
-                                <iframe id="vimeo-player-0" src="https://player.vimeo.com/video/1162941048?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="The Covernotes Live Performance Events Showreel"></iframe>
-                            </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <div class="video-touch-overlay"></div>
+                        <iframe src="https://www.youtube.com/embed/UAmWV9nk6Yw" title="The Covernotes Live Performance Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="showreel-card">
                     <div class="video-wrapper">
-                        <div class="video-touch-overlay" data-video-index="1"></div>
-                           <div style="padding:56.25% 0 0 0;position:relative;">
-                               <iframe id="vimeo-player-1" src="https://player.vimeo.com/video/1162941273?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="The Covernotes Festivals and Community Events Showreel"></iframe>
-                           </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <div class="video-touch-overlay"></div>
+                        <iframe src="https://www.youtube.com/embed/yfEIqsvBN0s" title="The Covernotes Wedding and Event Performance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="showreel-card">
                     <div class="video-wrapper">
-                        <div class="video-touch-overlay" data-video-index="2"></div>
-                            <div style="padding:56.25% 0 0 0;position:relative;">
-                                <iframe id="vimeo-player-2" src="https://player.vimeo.com/video/1162940785?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="The Covernotes Band Corporate and Wedding Events Showreel"></iframe>
-                        </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <div class="video-touch-overlay"></div>
+                        <iframe src="https://www.youtube.com/embed/xuNeyzvruLg" title="The Covernotes Corporate Event Entertainment" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -1542,7 +1533,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p><a href="/cdn-cgi/l/email-protection#dfb6b1b9b09fabb7babcb0a9baadb1b0abbaacf1bcbe">Email:</a></p>
+                <p>Email: <a href="/cdn-cgi/l/email-protection#2940474f46695d414c4a465f4c5b47465d4c5a074a48"><span class="__cf_email__" data-cfemail="721b1c141d32061a17111d0417001c1d0617015c1113">[email&#160;protected]</span></a></p>
                 <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
             </div>
             <div class="footer-section">
@@ -1571,7 +1562,7 @@
             <p>© 2026 The Covernotes. All rights reserved.</p>
         </div>
     </footer>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobileMenu');
         const navLinks = document.getElementById('navLinks');
@@ -1770,37 +1761,9 @@
         const showreelsWrapper = document.getElementById('showreelsWrapper');
         const totalShowreels = document.querySelectorAll('.showreel-card').length;
         const videoOverlays = document.querySelectorAll('.video-touch-overlay');
-        
-        // Initialize Vimeo Player API for all videos
-        const vimeoPlayers = [];
-        for (let i = 0; i < totalShowreels; i++) {
-            const iframe = document.getElementById(`vimeo-player-${i}`);
-            if (iframe) {
-                vimeoPlayers[i] = new Vimeo.Player(iframe);
-            }
-        }
-        
-        // Function to pause all videos except the current one
-        function pauseAllVideosExcept(exceptIndex) {
-            vimeoPlayers.forEach((player, index) => {
-                if (player && index !== exceptIndex) {
-                    player.pause().catch(err => {
-                        // Ignore errors if video is already paused
-                    });
-                }
-            });
-        }
        
         // Make moveShowreel global so onclick can access it
         window.moveShowreel = function(direction) {
-            // Pause all videos when changing slides
-            pauseAllVideosExcept(-1); // -1 means pause all
-            
-            // Reset all overlays to visible state
-            videoOverlays.forEach(overlay => {
-                overlay.classList.remove('hide');
-            });
-            
             currentShowreel += direction;
             if (currentShowreel < 0) currentShowreel = totalShowreels - 1;
             if (currentShowreel >= totalShowreels) currentShowreel = 0;
@@ -1815,7 +1778,6 @@
         let showreelTouchCurrentX = 0;
         let showreelIsDragging = false;
         let showreelStartTransform = 0;
-        let showreelTouchMoved = false;
         
         // Function to handle touch on carousel container
         function handleShowreelTouch(e, eventType) {
@@ -1823,7 +1785,6 @@
                 showreelTouchStartX = e.changedTouches[0].screenX;
                 showreelTouchCurrentX = showreelTouchStartX;
                 showreelIsDragging = true;
-                showreelTouchMoved = false;
                 
                 // Get current transform value
                 showreelStartTransform = currentShowreel * 100;
@@ -1837,12 +1798,6 @@
             } else if (eventType === 'move' && showreelIsDragging) {
                 showreelTouchCurrentX = e.changedTouches[0].screenX;
                 const diff = showreelTouchCurrentX - showreelTouchStartX;
-                
-                // Track if there was significant movement
-                if (Math.abs(diff) > 5) {
-                    showreelTouchMoved = true;
-                }
-                
                 const wrapperWidth = showreelsWrapper.offsetWidth / totalShowreels;
                 const diffPercent = (diff / wrapperWidth) * 100;
                 
@@ -1880,32 +1835,15 @@
         showreelsCarousel.addEventListener('touchmove', (e) => handleShowreelTouch(e, 'move'), { passive: true });
         showreelsCarousel.addEventListener('touchend', (e) => handleShowreelTouch(e, 'end'), { passive: true });
         
-        // Handle overlay click - hide overlay and play video with single click
-        videoOverlays.forEach((overlay, index) => {
+        // Also attach events to video overlays so touch on video works
+        videoOverlays.forEach(overlay => {
             overlay.addEventListener('touchstart', (e) => handleShowreelTouch(e, 'start'), { passive: true });
             overlay.addEventListener('touchmove', (e) => handleShowreelTouch(e, 'move'), { passive: true });
             overlay.addEventListener('touchend', (e) => handleShowreelTouch(e, 'end'), { passive: true });
             
-            // Single click/tap on overlay plays video (hides overlay and plays)
+            // Single tap on overlay plays video (hides overlay)
             overlay.addEventListener('click', (e) => {
-                // Only process click if user didn't drag
-                if (!showreelTouchMoved) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Hide the overlay
-                    e.target.classList.add('hide');
-                    
-                    // Pause all other videos
-                    pauseAllVideosExcept(index);
-                    
-                    // Play this video
-                    if (vimeoPlayers[index]) {
-                        vimeoPlayers[index].play().catch(err => {
-                            console.log('Play failed:', err);
-                        });
-                    }
-                }
+                e.target.classList.add('hide');
             });
         });
        
@@ -1967,4 +1905,12 @@
                     const offset = 90;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({
-                        top: targetP
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
