@@ -195,303 +195,367 @@
         .hero-carousel {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 50%; /* CENTER it */
+            transform: translateX(-50%); /* keeps it centered */
             width: 100%;
+            max-width: 1400px; /* MATCHES SITE WIDTH */
             height: 100%;
-            z-index: 1;
+            z-index: 0;
         }
        
-        .hero-carousel img {
+        .hero-slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out; /* smoother crossfade */
         }
        
-        .hero-carousel img.active {
-            opacity: 0.4;
+        .hero-slide.active {
+            opacity: 1;
+        }
+       
+        /* KEY FIX IS HERE */
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+       
+            transform: scale(1); /* base state */
+            transition: transform 3s ease-in-out; /* replaces keyframe animation */
+        }
+       
+        .hero-slide.active img {
+            transform: scale(1.1); /* zooms while slide is active */
+        }
+       
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
        
         .hero-content {
             position: relative;
             z-index: 2;
+            animation: fadeInUp 3s ease-out;
+        }
+       
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
        
         .hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 15vw, 10rem);
-            letter-spacing: 15px;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            font-size: clamp(3rem, 10vw, 8rem);
+            letter-spacing: 8px;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            display: inline-block;
         }
        
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: clamp(1.2rem, 3vw, 2rem);
             font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 3rem;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
        
         .social-icons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
+            margin-top: 1rem;
         }
        
         .social-icons a {
-            color: var(--secondary);
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--secondary);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            color: var(--secondary);
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
        
         .social-icons a:hover {
-            border-color: var(--accent);
             background: var(--accent);
-            transform: translateY(-3px);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+       
+        .section-divider {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
         }
        
         section {
-            padding: 5rem 2rem;
+            padding: 2rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            scroll-margin-top: 90px;
         }
        
-        h2 {
+        section h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
-            letter-spacing: 6px;
-            margin-bottom: 2.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
             text-align: center;
-            color: var(--accent);
         }
        
         .about-content {
             max-width: 900px;
             margin: 0 auto;
-            text-align: left;
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
         }
        
         .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.2rem;
         }
        
         .about-cta {
             display: flex;
             gap: 1.5rem;
-            margin-top: 2.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
        
         .cta-button {
-            padding: 1rem 2.5rem;
+            padding: 0.9rem 2.2rem;
             background: var(--accent);
             color: var(--secondary);
             text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 3px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
             transition: all 0.3s ease;
-            border: 2px solid var(--accent);
-            display: inline-block;
         }
        
         .cta-button:hover {
-            background: transparent;
-            color: var(--accent);
+            background: #ff1a4d;
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.25);
         }
        
-        .showreels-carousel {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-       
-        .showreels-wrapper {
-            display: flex;
-            transition: transform 0.6s ease;
-        }
-       
-        .showreel-card {
-            min-width: 100%;
-            padding: 0 1rem;
-        }
-       
-        .video-wrapper {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-       
-        .video-touch-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 5;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s ease;
-        }
-       
-        .video-touch-overlay::after {
-            content: '▶';
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-       
-        .video-touch-overlay.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-       
-        .video-touch-overlay.dragging {
-            cursor: grabbing;
-        }
-       
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-       
-        .carousel-nav button {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: var(--secondary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-       
-        .carousel-nav button:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
+        /* Removed .showreels-grid styles as we're replacing with carousel */
        
         .gallery-carousel {
             position: relative;
+            max-width: 1400px;
+            margin: 1.5rem auto;
             overflow: hidden;
         }
        
         .gallery-wrapper {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             transition: transform 0.6s ease;
         }
        
         .gallery-item-wrapper {
-            flex: 0 0 calc((100% - 2rem) / 3);
+            flex: 0 0 calc((100% - 4rem) / 3);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+        }
+       
+        .gallery-item-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.3);
+        }
+       
+        .gallery-item-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+       
+        .gallery-item-wrapper:hover::before {
+            opacity: 1;
         }
        
         .gallery-item {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-       
-        .gallery-item:hover {
-            transform: scale(1.05);
         }
        
         .lightbox {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.95);
-            display: none;
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
+            animation: fadeIn 0.3s ease;
         }
        
         .lightbox.active {
             display: flex;
         }
        
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
        
-        .lightbox-content img {
+        .lightbox-content {
+            position: relative;
+            max-width: 85%;
+            max-height: 85%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+       
+        .lightbox-image {
             max-width: 100%;
-            max-height: 85vh;
-            border-radius: 8px;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 4px;
         }
        
         .lightbox-caption {
+            color: var(--secondary);
+            margin-top: 0.8rem;
+            font-size: 1.05rem;
             text-align: center;
-            margin-top: 1rem;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
         }
        
         .lightbox-close {
             position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--secondary);
+            border-radius: 50%;
             color: var(--secondary);
+            font-size: 1.8rem;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
             z-index: 2001;
         }
        
-        .lightbox-nav {
+        .lightbox-close:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: rotate(90deg);
+        }
+       
+        .lightbox-prev,
+        .lightbox-next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 3rem;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--secondary);
+            border-radius: 50%;
             color: var(--secondary);
+            font-size: 1.4rem;
             cursor: pointer;
-            user-select: none;
-            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            transition: all 0.3s ease;
         }
        
-        .lightbox-nav.prev {
-            left: 20px;
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: var(--accent);
+            border-color: var(--accent);
         }
        
-        .lightbox-nav.next {
-            right: 20px;
+        .lightbox-prev { left: 15px; }
+        .lightbox-next { right: 15px; }
+       
+        .setlist-intro {
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+       
+        .setlist-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+       
+        .setlist-category h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+       
+        .setlist-category ul {
+            list-style: none;
+        }
+       
+        .setlist-category li {
+            padding: 0.1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-weight: 300;
+            font-size: 0.9rem;
         }
        
         .reviews-carousel {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 1400px;
+            margin: 1.5rem auto;
             overflow: hidden;
         }
        
@@ -501,40 +565,112 @@
         }
        
         .review-card {
-            min-width: 100%;
-            padding: 2rem;
+            flex: 0 0 calc(100% / 3);
+            padding: 1.5rem;
             text-align: center;
+            flex-shrink: 0;
         }
        
-        .review-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .review-stars {
+            font-size: 1.4rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2rem;
+        }
+       
+        .review-text {
+            font-size: 1rem;
             font-style: italic;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.9);
         }
        
         .review-author {
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--accent);
         }
        
-        .setlist-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            max-width: 1000px;
-            margin: 0 auto;
+        /* New Showreels Carousel Styles */
+        .showreels-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 1.5rem auto;
+            overflow: hidden;
         }
        
-        .setlist-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
+        .showreels-wrapper {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+       
+        .showreel-card {
+            flex: 0 0 100%;
+        }
+       
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
             border-radius: 8px;
-            border-left: 3px solid var(--accent);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
        
-        .contact-form {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Touch overlay to enable swipe on videos */
+        .video-touch-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background: transparent;
+            cursor: grab;
+        }
+        
+        .video-touch-overlay.dragging {
+            cursor: grabbing;
+        }
+        
+        .video-touch-overlay.hide {
+            display: none;
+        }
+       
+        .carousel-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+       
+        .carousel-nav button {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+       
+        .carousel-nav button:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+       
+        .contact-container {
             max-width: 700px;
             margin: 0 auto;
         }
@@ -542,60 +678,86 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 0.7rem;
+            margin-bottom: 0.8rem;
         }
        
         .form-group {
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 0.8rem;
         }
        
         .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.9);
+            display: block;
+            margin-bottom: 0.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+       
+        .form-group label.required::after {
+            content: ' *';
+            color: var(--accent);
         }
        
         .form-group input,
         .form-group textarea,
         .form-group select {
-            padding: 0.8rem;
+            width: 100%;
+            padding: 0.7rem;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             color: var(--secondary);
             font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            /* Forces identical height across all browsers */
+            height: 54px;
+            line-height: 1.2;
+           
+            /* Removes default mobile system styling/borders */
+            appearance: none;
+            -webkit-appearance: none;
+        }
+       
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
         }
        
         .form-group textarea {
-            min-height: 150px;
             resize: vertical;
+            min-height: 100px;
         }
        
-        .submit-button {
-            width: 100%;
-            padding: 1rem;
+        button[type="submit"] {
             background: var(--accent);
             color: var(--secondary);
             border: none;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 0.9rem 3rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
             cursor: pointer;
+            border-radius: 4px;
             transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 0.8rem;
         }
        
-        .submit-button:hover {
+        button[type="submit"]:hover {
             background: #ff1a4d;
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.25);
         }
        
         footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 2rem 1.5rem;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2.5rem 2rem 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
        
@@ -604,15 +766,15 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 2rem;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
         }
        
         .footer-section h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             letter-spacing: 2px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--accent);
         }
        
@@ -620,9 +782,8 @@
         .footer-section a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
        
         .footer-section a:hover {
@@ -631,11 +792,11 @@
        
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
         }
        
         .footer-social a {
-            color: var(--secondary);
             width: 38px;
             height: 38px;
             display: flex;
@@ -762,16 +923,7 @@
             scroll-behavior: smooth;
         }
        
-        .section-divider {
-            max-width: 1400px;
-            margin: 0 auto;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-        }
-       
     </style>
-    <!-- Vimeo Player API -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -779,9 +931,10 @@
         <div class="nav-container">
             <a href="#home" class="logo">
                 <img src="images/covernoteslogo.jpeg" alt="The Covernotes Logo" class="logo-icon">
-                <span>THE COVERNOTES</span>
+                THE COVERNOTES
             </a>
             <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#showreels">Showreels</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -789,22 +942,29 @@
                 <li><a href="#setlist">Set List</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu" onclick="toggleMenu()">
+            <div class="mobile-menu" id="mobileMenu">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
     </nav>
-   
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-carousel">
-            <div class="hero-slides">
-                <img src="images/hero1.jpeg" alt="The Covernotes performing live at a wedding in Ontario" class="active" loading="eager">
-                <img src="images/hero2.jpeg" alt="The Covernotes band performing at a corporate event in Toronto" loading="lazy">
-                <img src="images/hero3.jpeg" alt="The Covernotes live performance at a private party in the GTA" loading="lazy">
-                <img src="images/hero4.jpeg" alt="The Covernotes playing at a special event in Greater Toronto" loading="lazy">
+    <!-- Hero Section with Carousel -->
+    <section id="home" class="hero">
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="hero-slide active">
+                <img src="images/hero1.jpeg" alt="The Covernotes live cover band performing at a Ribfest Festival in Ontario" loading="eager">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero2.jpeg" alt="The Covernotes band on playing live acoustic weeding cocktail party in Toronto" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero3.jpeg" alt="The Covernotes performing live music at a private corporate party in the GTA" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="images/hero4.jpeg" alt="The Covernotes professional event band entertaining wedding guests in Ontario" loading="lazy">
+            </div>
+            <div class="hero-slide">
                 <img src="images/hero5.jpeg" alt="The Covernotes live performance at a private party function in Greater Toronto Area" loading="lazy">
             </div>
         </div>
@@ -853,6 +1013,7 @@
                             <div style="padding:56.25% 0 0 0;position:relative;">
                                 <iframe id="vimeo-player-0" src="https://player.vimeo.com/video/1162941048?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="The Covernotes Live Performance Events Showreel"></iframe>
                             </div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
                 <div class="showreel-card">
@@ -861,6 +1022,7 @@
                            <div style="padding:56.25% 0 0 0;position:relative;">
                                <iframe id="vimeo-player-1" src="https://player.vimeo.com/video/1162941273?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="The Covernotes Festivals and Community Events Showreel"></iframe>
                            </div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
                 <div class="showreel-card">
@@ -869,6 +1031,7 @@
                             <div style="padding:56.25% 0 0 0;position:relative;">
                                 <iframe id="vimeo-player-2" src="https://player.vimeo.com/video/1162940785?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="The Covernotes Band Corporate and Wedding Events Showreel"></iframe>
                         </div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
@@ -902,31 +1065,31 @@
                 <div class="gallery-item-wrapper" onclick="openLightbox(5)">
                     <img src="images/Rol - Acoustic.jpg" alt="Rol performing acoustic guitar at wedding ceremony" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
-                 <div class="gallery-item-wrapper" onclick="openLightbox(6)">
+                 <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Ken playing live at a wedding in Burlington.jpg" alt="Ken performing live at a wedding in Burlington" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
-                <div class="gallery-item-wrapper" onclick="openLightbox(7)">
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Rol Guitar close up.jpg" alt="Close up of electric guitar performance at live event" class="gallery-item" style="object-position: top;" loading="lazy">
                 </div>
                 <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Ken performing at a birthday party in Oakville.jpg" alt="Ken performing at a birthday party in Oakville" class="gallery-item" style="object-position: top;" loading="lazy">
                 </div>
-                <div class="gallery-item-wrapper" onclick="openLightbox(9)">
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Rol performing at a birthday party in Oakville.jpg" alt="Rol performing at a birthday party in Oakville" class="gallery-item" style="object-position: top;" loading="lazy">
                 </div>
-                <div class="gallery-item-wrapper" onclick="openLightbox(10)">
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Ken performing at a private party in the greater toronto area.jpg" alt="Ken performing at a private party in the greater toronto area" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
-                <div class="gallery-item-wrapper" onclick="openLightbox(11)">
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Rol performing at a private party in the greater toronto area.jpg" alt="Rol performing at a private party in the greater toronto area" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
-                 <div class="gallery-item-wrapper" onclick="openLightbox(12)">
+                 <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Ken playing live at a corporate event in Hamilton.JPG" alt="Ken performing live at a corporate event in Hamilton" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
-                <div class="gallery-item-wrapper" onclick="openLightbox(13)">
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Ken playing at an outdoor summer party and school college festival.jpg" alt="Ken performing at an outdoor summer party and school college festival" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
-                <div class="gallery-item-wrapper" onclick="openLightbox(14)">
+                <div class="gallery-item-wrapper" onclick="openLightbox(8)">
                     <img src="images/Rol playing at an outdoor summer party and school college festival.jpg" alt="Rol performing at an outdoor summer party and school college festival" class="gallery-item" style="object-position: center;" loading="lazy">
                 </div>
             </div>
@@ -936,14 +1099,13 @@
             </div>
         </div>
     </section>
-   
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightboxOnBackground(event)">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <span class="lightbox-nav prev" onclick="changeImage(-1)">‹</span>
-        <span class="lightbox-nav next" onclick="changeImage(1)">›</span>
+    <div class="lightbox" id="lightbox" onclick="closeLightboxOnBackground(event)">
+        <div class="lightbox-close" onclick="closeLightbox()">×</div>
+        <div class="lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">‹</div>
+        <div class="lightbox-next" onclick="changeImage(1); event.stopPropagation();">›</div>
         <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="">
+            <img id="lightbox-img" class="lightbox-image" src="" alt="">
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
     </div>
@@ -954,20 +1116,99 @@
         <div class="reviews-carousel" id="reviewsCarousel">
             <div class="reviews-wrapper" id="reviewsWrapper">
                 <div class="review-card">
-                    <p>"This band is exactly what you need to energize your event! We hired them for our wedding and everyone was blown away by their talent, song selection and positive attitude. They handled our requests with professionalism and came ready to perform at a moments notice. They learned all our requested songs perfectly and even surprised us with a few originals that had the entire place singing along. Cannot recommend The Covernotes enough - truly a one of a kind experience!"</p>
-                    <div class="review-author">- Sarah & Michael, Wedding Reception Toronto</div>
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"This is the band you want. These guys were amazing!!! It was easy to communicate with Ken leading up to the event. They were punctual, professional and truly ready the crowd. We hired the Covernotes for a 40th birthday house party and had everyone comment on how great they were. Thank you for making this birthday a memorable one"</div>
+                    <div class="review-author">— Kristin M., 40th Birthday Party 2025</div>
                 </div>
                 <div class="review-card">
-                    <p>"The Covernotes absolutely made our corporate event! Professional, punctual, and incredibly talented. They read the room perfectly and kept everyone engaged all night. Our CEO personally thanked them - that never happens! We'll definitely be booking them again."</p>
-                    <div class="review-author">- Jennifer L., Corporate Event Coordinator</div>
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Excellent Experience. The Covernotes were a great addition to our annual street party. Ken was great with communication ahead of the event. The performance was excellent, playing all types of tunes to appeal to an all ages audience. Very positive experience, plan to have them again next year!"</div>
+                    <div class="review-author">— Heather P., Street Party 2025</div>
                 </div>
                 <div class="review-card">
-                    <p>"Hired The Covernotes for my 50th birthday party and they were phenomenal! They played everything from classic rock to modern hits, and the dance floor was packed all night. So many guests asked me where I found them. Worth every penny!"</p>
-                    <div class="review-author">- David R., Private Party Oakville</div>
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented, and so much fun. Highly recommend!"</div>
+                    <div class="review-author">— Sarah & Mike, Wedding 2024</div>
                 </div>
                 <div class="review-card">
-                    <p>"Absolutely incredible performance at our wedding! The Covernotes brought so much energy and joy to our special day. They learned our first dance song perfectly and even took requests from guests throughout the night. Everyone is still talking about how amazing the band was. Highly recommend!"</p>
-                    <div class="review-author">- Emma & James, Wedding Burlington</div>
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes were amazing, from start to finish. Arranging logistics couldn’t have gone smoother with their incredible knowledge of what they needed from us in order to ensure their best performance for our community. Everyone loved their performance and eclectic music selections. Over 1000 people in our community had the pleasure of being entertained by them and we look forward to working with them again."</div>
+                    <div class="review-author">— Shabana P, Haloween in the Park 2023</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes were an absolute hit at our Margaritaville night on the patio. They sounded incredible, kept the energy up, and had us dancing all evening. Their set up looked great and they were a pleasure to work with"</div>
+                    <div class="review-author">— Martin S., Toronto Badminton and Racquet Club Party 2025</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Teriffic band! We were very impressed with The Covernotes! They went above our expectations and were a hit with the audience. We hired The Covernotes for our rooftop resident event. The Covernotes were easy to work with and were open to our requests. 10/5 Stars!"</div>
+                    <div class="review-author">— Katie M., Roof Top Corporate Party 2025</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection, and they had everyone from the CEO to the interns on the dance floor!"</div>
+                    <div class="review-author">— Simran K, Corporate Event 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Amazing. The Covernotes were professional and surpassed our expectations. We highly recommend them for your next event!"</div>
+                    <div class="review-author">— Amy K., Birthday Party 2025</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating, and their music selection is perfect for all ages."</div>
+                    <div class="review-author">— Jennifer L., 50th Birthday Party</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Covernotes was exceptional during our birthday party and our guests were all impressed by the level of the performance! Very good communication from Ken who organized perfectly for that night. We will definitely recommend them to other people who are looking for a different experience at their events. 5 stars!"</div>
+                    <div class="review-author">— Negar G, 40th Birthday Party 2025</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every cent!"</div>
+                    <div class="review-author">— Noor and Harman., Wedding Reception</div>
+                </div>
+
+                 <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"We couldn't be happier with the band we hired for our corporate event! The sound quality and vocal performance were outstanding, truly elevating the atmosphere of the evening. We were impressed with their punctuality, professionalism and repetoire versatility. We would absolutely hire them again for future events and highly recommend them to anyone looking for exceptional live music."</div>
+                    <div class="review-author">— Max G., Corporate Event 2024</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication, and outstanding performance."</div>
+                    <div class="review-author">— Lisa M., Anniversary Party 2024</div>
+                </div>
+                
+                 <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Great band and super bunch of guys. We booked the Covernotes for our 25th anniversary party. Great music and good cross section of tunes that appealed to the entire crowd. On time, professional and amazing sound. Highly recommended. Made the event special!"</div>
+                    <div class="review-author">— Kelly H., 25th Wedding Anniversary 2024</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented, and really know how to entertain a crowd. Would book again in a heartbeat!"</div>
+                    <div class="review-author">— Mark & Rachel, Summer Festival</div>
+                </div>
+                
+                 <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Ken and the Covernotes were amazing! We hosted a corporate winter event and they left a great impression with our guests. Ken was super duper to work with and very accommodating! As someone who doesn’t typically do events on a day-to-day basis, I would highly recommend the Covernotes, you won’t regret it"</div>
+                    <div class="review-author">— Badan F., Corproate Party 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual, and incredibly talented musicians."</div>
+                    <div class="review-author">— Lillian B., Fundraising Gala 2024</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"What an experience! If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"</div>
+                    <div class="review-author">— Alexandra I., Wedding Reception</div>
                 </div>
             </div>
             <div class="carousel-nav">
@@ -977,225 +1218,473 @@
         </div>
     </section>
     <div class="section-divider"></div>
-    <!-- Setlist Section -->
+   
+    <!-- Set List Section -->
     <section id="setlist">
         <h2>SET LIST</h2>
-        <div class="setlist-grid">
-            <div class="setlist-item">Sweet Child O' Mine - Guns N' Roses</div>
-            <div class="setlist-item">Livin' on a Prayer - Bon Jovi</div>
-            <div class="setlist-item">Mr. Brightside - The Killers</div>
-            <div class="setlist-item">Don't Stop Believin' - Journey</div>
-            <div class="setlist-item">I Wanna Dance with Somebody - Whitney Houston</div>
-            <div class="setlist-item">Uptown Funk - Bruno Mars</div>
-            <div class="setlist-item">Shut Up and Dance - Walk the Moon</div>
-            <div class="setlist-item">September - Earth, Wind & Fire</div>
-            <div class="setlist-item">I'm Yours - Jason Mraz</div>
-            <div class="setlist-item">Valerie - Amy Winehouse</div>
-            <div class="setlist-item">Happy - Pharrell Williams</div>
-            <div class="setlist-item">Crazy Little Thing Called Love - Queen</div>
-            <div class="setlist-item">Dancing Queen - ABBA</div>
-            <div class="setlist-item">Sweet Caroline - Neil Diamond</div>
-            <div class="setlist-item">Billie Jean - Michael Jackson</div>
-            <div class="setlist-item">I'm Still Standing - Elton John</div>
-            <div class="setlist-item">Brown Eyed Girl - Van Morrison</div>
-            <div class="setlist-item">Sex on Fire - Kings of Leon</div>
-            <div class="setlist-item">Use Somebody - Kings of Leon</div>
-            <div class="setlist-item">Rolling in the Deep - Adele</div>
-            <div class="setlist-item">Levitating - Dua Lipa</div>
-            <div class="setlist-item">Counting Stars - OneRepublic</div>
-            <div class="setlist-item">Blinding Lights - The Weeknd</div>
-            <div class="setlist-item">Take on Me - a-ha</div>
-            <div class="setlist-item">All Star - Smash Mouth</div>
-            <div class="setlist-item">500 Miles - The Proclaimers</div>
-            <div class="setlist-item">Mr. Blue Sky - Electric Light Orchestra</div>
-            <div class="setlist-item">Just the Way You Are - Bruno Mars</div>
-            <div class="setlist-item">Beautiful Day - U2</div>
-            <div class="setlist-item">Can't Stop the Feeling - Justin Timberlake</div>
-            <div class="setlist-item">Hey Ya! - OutKast</div>
-            <div class="setlist-item">Proud Mary - Tina Turner</div>
-            <div class="setlist-item">Walking on Sunshine - Katrina and the Waves</div>
-            <div class="setlist-item">Twist and Shout - The Beatles</div>
-            <div class="setlist-item">Dynamite - Taio Cruz</div>
-            <div class="setlist-item">Treasure - Bruno Mars</div>
-            <div class="setlist-item">Love Shack - The B-52's</div>
-            <div class="setlist-item">Footloose - Kenny Loggins</div>
-            <div class="setlist-item">I'm Gonna Be (500 Miles) - The Proclaimers</div>
-            <div class="setlist-item">Come on Eileen - Dexys Midnight Runners</div>
-            <div class="setlist-item">Wonderwall - Oasis</div>
-            <div class="setlist-item">Don't Look Back in Anger - Oasis</div>
-            <div class="setlist-item">Champagne Supernova - Oasis</div>
-            <div class="setlist-item">Live Forever - Oasis</div>
-            <div class="setlist-item">Common People - Pulp</div>
-            <div class="setlist-item">Song 2 - Blur</div>
-            <div class="setlist-item">Girls & Boys - Blur</div>
-            <div class="setlist-item">Parklife - Blur</div>
-            <div class="setlist-item">There She Goes - The La's</div>
-            <div class="setlist-item">Sit Down - James</div>
-            <div class="setlist-item">Laid - James</div>
-            <div class="setlist-item">Place Your Hands - Reef</div>
-            <div class="setlist-item">Tubthumping (I Get Knocked Down) - Chumbawamba</div>
-            <div class="setlist-item">Bittersweet Symphony - The Verve</div>
-            <div class="setlist-item">The Drugs Don't Work - The Verve</div>
-            <div class="setlist-item">Lucky Man - The Verve</div>
-            <div class="setlist-item">Disco 2000 - Pulp</div>
-            <div class="setlist-item">Country House - Blur</div>
-            <div class="setlist-item">Cigarettes & Alcohol - Oasis</div>
-            <div class="setlist-item">Supersonic - Oasis</div>
-            <div class="setlist-item">Don't Stop Me Now - Queen</div>
-            <div class="setlist-item">Somebody to Love - Queen</div>
-            <div class="setlist-item">Bohemian Rhapsody - Queen</div>
-            <div class="setlist-item">We Will Rock You - Queen</div>
-            <div class="setlist-item">We Are the Champions - Queen</div>
-            <div class="setlist-item">Under Pressure - Queen & David Bowie</div>
-            <div class="setlist-item">Radio Ga Ga - Queen</div>
-            <div class="setlist-item">I Want to Break Free - Queen</div>
-            <div class="setlist-item">Another One Bites the Dust - Queen</div>
-            <div class="setlist-item">Fat Bottomed Girls - Queen</div>
-            <div class="setlist-item">Killer Queen - Queen</div>
-            <div class="setlist-item">You're My Best Friend - Queen</div>
-            <div class="setlist-item">Good Old-Fashioned Lover Boy - Queen</div>
-            <div class="setlist-item">The Show Must Go On - Queen</div>
-            <div class="setlist-item">A Kind of Magic - Queen</div>
+        <div class="setlist-intro">
+            <p>We are very experienced managing the set both live or can tailor our set to your event, including specific songs requests you have.</p>
+            <p style="margin-top: 1.5rem;">On average a set of 1 hour would cover 16-19 songs. Example set times as standard cover 3 hours on site and we are flexible with no fuss in the arrangements. We can include background ipod or mp3 music during breaks as standard.</p>
+        </div>
+       
+        <!-- Pop Hits -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Pop Hits</h3>
+                <ul>
+                    <li>24K Magic - Bruno Mars</li>
+                    <li>Beat It - Michael Jackson</li>
+                    <li>Billie Jean - Michael Jackson</li>
+                    <li>Blame it on the Boogie - The Jacksons</li>
+                    <li>Blurred Lines - Robin Thicke</li>
+                    <li>Brown Eyed Girl - Van Morrison</li>
+                    <li>Can't Help Falling in Love - Elvis Presley</li>
+                    <li>Cosmic Girl - Jamiroquai</li>
+                    <li>Don't Start Now - Dua Lipa</li>
+                    <li>Dynamite - Taio Cruz</li>
+                    <li>Forget You - CeeLo Green</li>
+                    <li>Get Lucky - Daft Punk ft. Pharell Williams</li>
+                    <li>Happy - Pharell Williams</li>
+                    <li>Hero - Enrique Iglesias</li>
+                    <li>How Will I Know - Whitney Houston</li>
+                    <li>I Feel Good - James Brown</li>
+                    <li>I Want It That Way - Backstreet Boys</li>
+                    <li>I Want You Back - The Jackson 5</li>
+                    <li>I Wish - Stevie Wonder</li>
+                    <li>I'm a Believer - The Monkees</li>
+                    <li>It Wasn't Me - Shaggy</li>
+                    <li>Just the Way You Are - Bruno Mars</li>
+                    <li>Kiss - Prince</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3> </h3>
+                <ul>
+                    <li>Like a Prayer - Madonna</li>
+                    <li>Little L - Jamiroquai</li>
+                    <li>Locked Out of Heaven - Bruno Mars</li>
+                    <li>Lovely Day - Bill Withers</li>
+                    <li>Marry You - Bruno Mars</li>
+                    <li>Master Blaster - Stevie Wonder</li>
+                    <li>Moves Like Jagger - Maroon 5</li>
+                    <li>Play That Funky Music - Wild Cherry</li>
+                    <li>Rock With You - Michael Jackson</li>
+                    <li>Runaway Baby - Bruno Mars</li>
+                    <li>Shake It Off - Taylor Swift</li>
+                    <li>Shape of You - Ed Sheeran</li>
+                    <li>Sorry - Justin Bieber</li>
+                    <li>Sugar - Maroon 5</li>
+                    <li>Superstition - Stevie Wonder</li>
+                    <li>The Power of Love - Huey Lewis and the News</li>
+                    <li>The Way You Make Me Feel - Michael Jackson</li>
+                    <li>Thinking Out Loud - Ed Sheeran</li>
+                    <li>Thriller - Michael Jackson</li>
+                    <li>Treasure - Bruno Mars</li>
+                    <li>Unchained Melody - The Righteous Brothers</li>
+                    <li>Uptown Funk - Mark Ronson ft. Bruno Mars</li>
+                </ul>
+            </div>
+        </div>
+       
+        <!-- Rock -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Rock</h3>
+                <ul>
+                    <li>All the Small Things - Blink-182</li>
+                    <li>Basket Case - Green Day</li>
+                    <li>Black or White - Michael Jackson</li>
+                    <li>Come Together - The Beatles</li>
+                    <li>Complicated - Avril Lavigne</li>
+                    <li>Crazy Little Thing Called Love - Queen</li>
+                    <li>Don't Stop Me Now - Queen</li>
+                    <li>Great Balls of Fire - Jerry Lee Lewis</li>
+                    <li>Highway to Hell - AC/DC</li>
+                    <li>Honky Tonk Woman - The Rolling Stones</li>
+                    <li>How You Remind Me - Nickelback</li>
+                    <li>I Believe in a Thing Called Love - The Darkness</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3> </h3>
+                <ul>
+                    <li>I Saw Her Standing There - The Beatles</li>
+                    <li>I Want to Break Free - Queen</li>
+                    <li>I'm Still Standing - Elton John</li>
+                    <li>Johnny B Goode - Chuck Berry</li>
+                    <li>Mr. Brightside - The Killers</li>
+                    <li>Pretty Fly for a White Guy - The Offspring</li>
+                    <li>Sex on Fire - Kings of Leon</li>
+                    <li>She Will Be Loved - Maroon 5</li>
+                    <li>Stuck in the Middle With You - Stealers Wheel</li>
+                    <li>Thanks for the Memories - Fall Out Boy</li>
+                    <li>This Love - Maroon 5</li>
+                    <li>Twist and Shout - The Beatles</li>
+                </ul>
+            </div>
+        </div>
+       
+        <!-- Motown, Soul & R&B -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Motown, Soul & R&B</h3>
+                <ul>
+                    <li>Ain't No Sunshine - Bill Withers</li>
+                    <li>Bring it on Home to Me - Sam Cooke</li>
+                    <li>Build Me Up Buttercup - The Foundations</li>
+                    <li>Can't Take My Eyes Off You - Frankie Valli</li>
+                    <li>Downtown Came Uptown - David Wilcox</li>
+                    <li>Everyday I Have the Blues - B.B. King</li>
+                    <li>Have I Told You Lately - Van Morrison</li>
+                    <li>How Sweet It Is - James Taylor</li>
+                    <li>Human Nature - Michael Jackson</li>
+                    <li>I Can't Stop Loving You - Ray Charles</li>
+                    <li>I Got a Woman - Ray Charles</li>
+                    <li>I Heard It Through the Grapevine - Marvin Gaye</li>
+                    <li>I'm a Soul Man - Sam & Dave</li>
+                    <li>Let the Good Times Roll - Ray Charles</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3> </h3>
+                <ul>
+                    <li>Let's Stay Together - Al Green</li>
+                    <li>Man in the Mirror - Michael Jackson</li>
+                    <li>Midnight Hour - Wilson Pickett</li>
+                    <li>Money, That's What I Want - Barrett Strong</li>
+                    <li>My Girl - The Temptations</li>
+                    <li>Oh What a Night (December '63) - The Four Seasons</li>
+                    <li>Respect - Aretha Franklin</li>
+                    <li>September - Earth, Wind & Fire</li>
+                    <li>Signed Sealed Delivered - Stevie Wonder</li>
+                    <li>Stand by Me - Ben E. King</li>
+                    <li>Sweet Home Chicago - Robert Johnson</li>
+                    <li>Valerie - Amy Winehouse</li>
+                    <li>When a Man Loves a Woman - Percy Sledge</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Classic Rock & Roll + Latin -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Classic Rock & Roll</h3>
+                <ul>
+                    <li>Blue Suede Shoes - Elvis Presley</li>
+                    <li>Burning Love - Elvis Presley</li>
+                    <li>Do You Love Me - The Contours</li>
+                    <li>Green Door - Jim Lowe</li>
+                    <li>Hound Dog - Elvis Presley</li>
+                    <li>Jailhouse Rock - Elvis Presley</li>
+                    <li>Tear It Up - Elvis Presley</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3>Latin</h3>
+                <ul>
+                    <li>Bailamos - Enrique Iglesias</li>
+                    <li>Bamboleo - Gipsy Kings</li>
+                    <li>Cuba - Gibson Brothers</li>
+                    <li>La Bamba - Ritchie Valens</li>
+                    <li>Maria Maria - Santana ft. The Product G&B</li>
+                    <li>Mas Que Nada - Sergio Mendes</li>
+                    <li>Oye Como Va - Santana</li>
+                    <li>Smooth - Santana ft. Rob Thomas</li>
+                    <li>Volare - Gipsy Kings</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Reggae + Hip Hop & Rap -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Reggae</h3>
+                <ul>
+                    <li>Baby I Love Your Way - Big Mountain</li>
+                    <li>Good Thing Going - Sugar Minott</li>
+                    <li>Jammin' - Bob Marley</li>
+                    <li>Lazy Song - Bruno Mars</li>
+                    <li>Mysterious Girl - Peter Andre</li>
+                    <li>No Woman No Cry - Bob Marley</li>
+                    <li>One Love - Bob Marley</li>
+                    <li>Stir It Up - Bob Marley</li>
+                    <li>Sweat - Inner Circle</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3>Hip Hop & Rap</h3>
+                <ul>
+                    <li>Baby Got Back - Sir Mix-a-Lot</li>
+                    <li>Can't Touch This - MC Hammer</li>
+                    <li>Gangsta's Paradise - Coolio</li>
+                    <li>Gettin' Jiggy Wit' It - Will Smith</li>
+                    <li>It's Like That - Run-DMC</li>
+                    <li>No Diggity - Blackstreet</li>
+                    <li>Pony - Ginuwine</li>
+                    <li>Rapper's Delight - The Sugarhill Gang</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Christmas Classics + Halloween Classics -->
+        <div class="setlist-columns">
+            <div class="setlist-category">
+                <h3>Christmas Classics</h3>
+                <ul>
+                    <li>Blue Christmas - Elvis Presley</li>
+                    <li>Feliz Navidad - José Feliciano</li>
+                    <li>Jingle Bell Rock - Bobby Helms</li>
+                    <li>Jingle Bells - Traditional</li>
+                    <li>Last Christmas - Wham!</li>
+                    <li>Let It Snow - Dean Martin</li>
+                    <li>Merry Christmas Everyone - Shakin' Stevens</li>
+                    <li>Rockin' Around the Christmas Tree - Brenda Lee</li>
+                    <li>Run Run Rudolph - Chuck Berry</li>
+                    <li>Santa Claus is Coming to Town - Bruce Springsteen</li>
+                    <li>Silver Bells - Bing Crosby</li>
+                    <li>Slade's Merry Christmas - Slade</li>
+                    <li>Walking in a Winter Wonderland - Dean Martin</li>
+                    <li>White Christmas - Bing Crosby</li>
+                </ul>
+            </div>
+            <div class="setlist-category">
+                <h3>Halloween Classics</h3>
+                <ul>
+                    <li>Addams Family Theme Tune - Vic Mizzy</li>
+                    <li>Bad Moon Rising - Creedence Clearwater Revival</li>
+                    <li>Black Magic Woman - Santana</li>
+                    <li>Ghostbusters Theme Tune - Ray Parker Jr.</li>
+                    <li>Highway to Hell - AC/DC</li>
+                    <li>Wednesday Theme - Goo Goo Muck - The Cramps</li>
+                    <li>Scooby Doo Theme Tune - Larry Marks</li>
+                    <li>Superstition - Stevie Wonder</li>
+                    <li>Thriller - Michael Jackson</li>
+                </ul>
+            </div>
         </div>
     </section>
     <div class="section-divider"></div>
     <!-- Contact Section -->
     <section id="contact">
-        <h2>CONTACT US</h2>
-        <div class="contact-form">
-            <form action="https://formsubmit.co/info@thecovernotes.ca" method="POST">
-                <input type="hidden" name="_subject" value="New booking enquiry from website">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://www.thecovernotes.ca/thankyou.html">
-               
+        <h2>CONTACT</h2>
+        <div class="contact-container">
+            <form id="contactForm" action="https://formspree.io/f/mlgljzpg" method="POST">
+                <div class="form-group">
+                    <label for="name" class="required">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="required">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="subject" class="required">Event Type</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Wedding, Corporate Event" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="eventdate" class="required">Event Date</label>
+                        <input type="date" id="eventdate" name="eventdate" required>
                     </div>
                 </div>
-               
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests">
+                            <option value="">Please select...</option>
+                            <option value="0-50">0-50</option>
+                            <option value="51-100">51-100</option>
+                            <option value="101-150">101-150</option>
+                            <option value="151-250">151-250</option>
+                            <option value="251-500">251-500</option>
+                            <option value="501-1000">501-1000</option>
+                            <option value="1000+">1000+</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="event-type">Event Type</label>
-                        <select id="event-type" name="event-type">
-                            <option>Wedding</option>
-                            <option>Corporate Event</option>
-                            <option>Private Party</option>
-                            <option>Festival</option>
-                            <option>Other</option>
+                        <label for="venue_type">Indoor / Outdoor</label>
+                        <select id="venue_type" name="venue_type">
+                            <option value="">Please select...</option>
+                            <option value="Indoor">Indoor</option>
+                            <option value="Outdoor">Outdoor</option>
+                            <option value="Both">Both</option>
                         </select>
                     </div>
                 </div>
-               
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="date">Event Date</label>
-                        <input type="date" id="date" name="date">
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Event Location</label>
-                        <input type="text" id="location" name="location" placeholder="City, Venue">
-                    </div>
-                </div>
-               
                 <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about your event..."></textarea>
+                    <label for="venue_address">Venue Address (if known)</label>
+                    <input type="text" id="venue_address" name="venue_address" placeholder="Venue Name, City, Province">
                 </div>
-               
-                <button type="submit" class="submit-button">Send Message</button>
+                <div class="form-group">
+                    <label for="budget">Budget Range (Estimate)</label>
+                    <input type="text" id="budget" name="budget" placeholder="Optional">
+                </div>
+                <div class="form-group">
+                    <label for="message" class="required">Message</label>
+                    <textarea id="message" name="message" placeholder="Please include any special requests or additional details about your event." required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
             </form>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <a href="https://www.gigsalad.com/the_covernotes_oakville" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 1rem;">
+                    View us on GigSalad →
+                </a>
+            </div>
         </div>
     </section>
-   
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Email: info@thecovernotes.ca</p>
-                <p>Phone: (365) 779-0323</p>
+                <h3>The Covernotes</h3>
+                <p>Ontario's premier live party and events band</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="#about">About</a>
-                <a href="#showreels">Showreels</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
+                <h3>Contact</h3>
+                <p><a href="/cdn-cgi/l/email-protection#dfb6b1b9b09fabb7babcb0a9baadb1b0abbaacf1bcbe">Email:</a></p>
+                <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/the_covernotes/" target="_blank" aria-label="Instagram">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <a href="http://www.instagram.com/the_covernotes" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </a>
-                    <a href="http://www.facebook.com/thecovernotes/" target="_blank" aria-label="Facebook">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <a href="http://www.facebook.com/thecovernotes" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
                         </svg>
                     </a>
                 </div>
+               
             </div>
-            <div class="footer-section footer-logo-col">
+            <!-- footer logo -->
+            <div class="footer-col footer-logo-col">
                 <img src="images/covernoteslogo.jpeg" alt="The Covernotes Logo" class="footer-logo-img">
             </div>
+       
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 The Covernotes. All rights reserved. | Professional live music entertainment in Ontario, Canada</p>
+            <p>© 2026 The Covernotes. All rights reserved.</p>
         </div>
     </footer>
-   
-    <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+       
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+       
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+       
+        // Hero Carousel - 3s change + 3s zoom to 10%
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const totalSlides = slides.length;
+       
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
         }
        
-        // Hero Carousel
-        const heroSlides = document.querySelectorAll('.hero-carousel img');
-        let currentHeroSlide = 0;
-       
-        function changeHeroSlide() {
-            heroSlides[currentHeroSlide].classList.remove('active');
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            heroSlides[currentHeroSlide].classList.add('active');
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
         }
        
-        setInterval(changeHeroSlide, 5000);
+        setInterval(nextSlide, 3000);
        
-        // Gallery Carousel
+        // Gallery Carousel - 5s auto, seamless cycle
         let currentGallery = 0;
+        const galleryCarousel = document.getElementById('galleryCarousel');
         const galleryWrapper = document.getElementById('galleryWrapper');
         const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
         const totalGallery = galleryItems.length;
        
         // Make moveGallery global so onclick can access it
         window.moveGallery = function(direction) {
-            const itemsPerView = window.innerWidth > 1200 ? 3 : (window.innerWidth > 768 ? 2 : 1);
-            const maxIndex = Math.max(0, totalGallery - itemsPerView);
-           
             currentGallery += direction;
-            if (currentGallery < 0) currentGallery = 0;
-            if (currentGallery > maxIndex) currentGallery = maxIndex;
+            if (currentGallery < 0) currentGallery = totalGallery - 1;
+            if (currentGallery >= totalGallery) currentGallery = 0;
            
-            const offset = -(currentGallery * (100 / itemsPerView));
-            galleryWrapper.style.transform = `translateX(${offset}%)`;
+            const gapPx = parseFloat(getComputedStyle(galleryWrapper).gap) || 32;
+            const itemWidth = galleryItems[0] ? galleryItems[0].offsetWidth : 0;
+            const offset = (itemWidth + gapPx) * currentGallery;
+            galleryWrapper.style.transform = `translateX(-${offset}px)`;
         }
        
-        moveGallery(0); // Initialize position
+        moveGallery(0);
+        let galleryAutoRotate = setInterval(() => moveGallery(1), 9000);
+        
+        // Enhanced Touch/Swipe with drag feedback for Gallery
+        let galleryTouchStartX = 0;
+        let galleryTouchCurrentX = 0;
+        let galleryIsDragging = false;
+        let galleryStartTransform = 0;
+        
+        galleryCarousel.addEventListener('touchstart', (e) => {
+            galleryTouchStartX = e.changedTouches[0].screenX;
+            galleryTouchCurrentX = galleryTouchStartX;
+            galleryIsDragging = true;
+            
+            // Get current transform value
+            const gapPx = parseFloat(getComputedStyle(galleryWrapper).gap) || 32;
+            const itemWidth = galleryItems[0] ? galleryItems[0].offsetWidth : 0;
+            galleryStartTransform = (itemWidth + gapPx) * currentGallery;
+            
+            // Disable auto-rotate while dragging
+            clearInterval(galleryAutoRotate);
+            
+            // Faster transition for responsive feel
+            galleryWrapper.style.transition = 'transform 0.1s ease-out';
+        }, { passive: true });
+        
+        galleryCarousel.addEventListener('touchmove', (e) => {
+            if (!galleryIsDragging) return;
+            
+            galleryTouchCurrentX = e.changedTouches[0].screenX;
+            const diff = galleryTouchCurrentX - galleryTouchStartX;
+            
+            // Move the carousel as you drag
+            galleryWrapper.style.transform = `translateX(-${galleryStartTransform - diff}px)`;
+        }, { passive: true });
+        
+        galleryCarousel.addEventListener('touchend', (e) => {
+            if (!galleryIsDragging) return;
+            galleryIsDragging = false;
+            
+            const galleryTouchEndX = e.changedTouches[0].screenX;
+            
+            // Restore normal transition
+            galleryWrapper.style.transition = 'transform 0.6s ease';
+            
+            // Determine swipe direction
+            const swipeThreshold = 50;
+            if (galleryTouchStartX - galleryTouchEndX > swipeThreshold) {
+                // Swipe left - next image
+                moveGallery(1);
+            } else if (galleryTouchEndX - galleryTouchStartX > swipeThreshold) {
+                // Swipe right - previous image
+                moveGallery(-1);
+            } else {
+                // Snap back to current position
+                moveGallery(0);
+            }
+            
+            // Restart auto-rotate
+            galleryAutoRotate = setInterval(() => moveGallery(1), 9000);
+        }, { passive: true });
        
-        // Reviews Carousel with auto-rotate
+        // Reviews Carousel - 5s auto, seamless cycle
         let currentReview = 0;
         const reviewsCarousel = document.getElementById('reviewsCarousel');
         const reviewsWrapper = document.getElementById('reviewsWrapper');
@@ -1207,14 +1696,13 @@
             if (currentReview < 0) currentReview = totalReviews - 1;
             if (currentReview >= totalReviews) currentReview = 0;
            
-            reviewsWrapper.style.transform = `translateX(-${currentReview * 100}%)`;
+            const visible = window.innerWidth <= 768 ? 1 : 3;
+            const step = 100 / visible;
+            reviewsWrapper.style.transform = `translateX(-${currentReview * step}%)`;
         }
        
-        moveReview(0); // Initialize position
-       
-        // Auto-rotate reviews every 9 seconds
         let reviewAutoRotate = setInterval(() => moveReview(1), 9000);
-       
+        
         // Enhanced Touch/Swipe with drag feedback for Reviews
         let reviewTouchStartX = 0;
         let reviewTouchCurrentX = 0;
@@ -1227,9 +1715,11 @@
             reviewIsDragging = true;
             
             // Get current transform value
-            reviewStartTransform = currentReview * 100;
+            const visible = window.innerWidth <= 768 ? 1 : 3;
+            const step = 100 / visible;
+            reviewStartTransform = currentReview * step;
             
-            // Stop auto-rotate while dragging
+            // Disable auto-rotate while dragging
             clearInterval(reviewAutoRotate);
             
             // Faster transition for responsive feel
@@ -1392,6 +1882,11 @@
         
         // Handle overlay click - hide overlay and play video with single click
         videoOverlays.forEach((overlay, index) => {
+            overlay.addEventListener('touchstart', (e) => handleShowreelTouch(e, 'start'), { passive: true });
+            overlay.addEventListener('touchmove', (e) => handleShowreelTouch(e, 'move'), { passive: true });
+            overlay.addEventListener('touchend', (e) => handleShowreelTouch(e, 'end'), { passive: true });
+            
+            // Single click/tap on overlay plays video (hides overlay and plays)
             overlay.addEventListener('click', (e) => {
                 // Only process click if user didn't drag
                 if (!showreelTouchMoved) {
@@ -1399,7 +1894,7 @@
                     e.stopPropagation();
                     
                     // Hide the overlay
-                    overlay.classList.add('hide');
+                    e.target.classList.add('hide');
                     
                     // Pause all other videos
                     pauseAllVideosExcept(index);
@@ -1472,12 +1967,4 @@
                     const offset = 90;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                        top: targetP
