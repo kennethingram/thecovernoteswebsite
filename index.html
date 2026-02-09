@@ -199,11 +199,15 @@
 
         /* Underline always visible */
         .hero-underline {
-            text-decoration: underline;
-            color: inherit;           /* match hero color */
-            text-shadow: inherit;     /* match shadow */
-            font-family: inherit;     /* match hero font */
-            letter-spacing: inherit;  /* match hero spacing */
+            
+            display: inline-block;
+            border-bottom: 5px solid var(--primary); /* underline only */
+            padding-bottom: 0.2em;                   /* spacing below letters */
+            font-family: inherit;                     /* same as H1 */
+            font-size: inherit;                       /* same as H1 */
+            text-shadow: inherit;                     /* same as H1 */
+            font-weight: inherit;
+
         }
        
         .hero-carousel {
