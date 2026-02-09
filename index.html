@@ -196,9 +196,14 @@
             position: relative;
             overflow: hidden;
         }
-        
+
+        /* Underline always visible */
         .hero-underline {
-            text-decoration: underline;   /* always visible */
+            text-decoration: underline;
+            color: inherit;           /* match hero color */
+            text-shadow: inherit;     /* match shadow */
+            font-family: inherit;     /* match hero font */
+            letter-spacing: inherit;  /* match hero spacing */
         }
        
         .hero-carousel {
