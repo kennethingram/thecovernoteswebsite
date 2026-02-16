@@ -809,12 +809,20 @@
             justify-content: center;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
+            color: var(--secondary);
             transition: all 0.3s ease;
         }
-       
+
+        /* Ensure SVG inherits color */
+        .footer-social a svg {
+            fill: currentColor;
+        }
+
+        /* Hover behaviour matches Hero */
         .footer-social a:hover {
-            border-color: var(--accent);
             background: var(--accent);
+            border-color: var(--accent);
+            color: var(--secondary);
         }
        
         .footer-bottom {
