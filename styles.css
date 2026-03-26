@@ -1,0 +1,108 @@
+/* ============================================================
+   The Covernotes — Shared Stylesheet (inner pages)
+   ============================================================ */
+
+:root {
+    --primary: #000000;
+    --secondary: #ffffff;
+    --accent: #ff3366;
+    --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Outfit', sans-serif; background: var(--bg-gradient); color: var(--secondary); line-height: 1.5; overflow-x: hidden; }
+
+/* Nav */
+nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-container { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.8rem; }
+.logo-icon { width: 35px; height: 35px; object-fit: cover; border-radius: 100%; display: block; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { color: var(--secondary); text-decoration: none; font-weight: 300; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+.nav-links a:hover { color: var(--accent); }
+.mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.mobile-menu span { width: 25px; height: 2px; background: var(--secondary); transition: 0.3s; }
+.dropdown { position: relative; }
+.dropdown-toggle { cursor: pointer; user-select: none; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 0.8rem); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.98); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 0.5rem 0; min-width: 180px; list-style: none; z-index: 1001; }
+.dropdown.open .dropdown-menu { display: block; }
+.dropdown-menu li a { display: block; padding: 0.6rem 1.4rem; white-space: nowrap; font-size: 0.9rem; }
+
+/* Page banner (weddings, corporate, parties, about) */
+.page-banner { position: relative; height: 55vh; min-height: 320px; overflow: hidden; margin-top: 57px; }
+.page-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.page-banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+.page-banner-overlay h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 5.5rem); letter-spacing: 6px; color: var(--secondary); text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
+.page-banner-overlay p { font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 300; letter-spacing: 2px; color: rgba(255,255,255,0.9); margin-top: 0.8rem; }
+
+/* Page header (testimonials, faq) */
+.page-header { padding: 6rem 2rem 3rem; text-align: center; max-width: 1400px; margin: 0 auto; }
+.page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: 6px; }
+.page-header p { font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-top: 0.8rem; }
+
+/* Sections */
+.section-divider { max-width: 1400px; margin: 0 auto; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent); }
+section { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
+section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 4px; margin-bottom: 1.5rem; text-align: center; }
+.page-content { max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.05rem; font-weight: 300; line-height: 1.7; }
+.page-content p { margin-bottom: 1.2rem; }
+
+/* Features grid */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.5rem; text-align: center; }
+.feature-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 0.6rem; }
+.feature-card p { font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.85); }
+
+/* Highlights grid (about) */
+.highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.highlight-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.5rem; text-align: center; }
+.highlight-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 0.5rem; }
+.highlight-card p { font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.85); }
+
+/* Reviews grid */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+.review-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem; text-align: center; }
+.review-stars { font-size: 1.3rem; color: #ffd700; margin-bottom: 0.8rem; letter-spacing: 0.2rem; }
+.review-text { font-size: 0.95rem; font-style: italic; line-height: 1.6; margin-bottom: 0.8rem; color: rgba(255,255,255,0.9); }
+.review-author { font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+
+/* FAQ (faq.html) */
+.faq-container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem; }
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-question { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 0.7rem; }
+.faq-answer { font-size: 1rem; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.9); }
+
+/* CTA */
+.cta-section { text-align: center; padding: 3rem 2rem; }
+.cta-section p { font-size: 1.1rem; font-weight: 300; margin-bottom: 2rem; color: rgba(255,255,255,0.85); }
+.cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.cta-button { display: inline-block; padding: 0.9rem 2.5rem; background: var(--accent); color: var(--secondary); text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-radius: 4px; transition: all 0.3s ease; }
+.cta-button:hover { background: #ff1a4d; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,51,102,0.25); }
+
+/* Footer */
+footer { background: rgba(0,0,0,0.95); padding: 2.5rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer-content { max-width: 1400px; margin: 0 auto 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.footer-section { text-align: center; }
+.footer-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 0.8rem; color: var(--accent); }
+.footer-section p, .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; line-height: 1.6; }
+.footer-section a:hover { color: var(--accent); }
+.footer-social { display: flex; gap: 0.8rem; margin-top: 0.8rem; justify-content: center; }
+.footer-social a { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; color: var(--secondary); transition: all 0.3s ease; }
+.footer-social a svg { fill: currentColor; }
+.footer-social a:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
+.footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-menu { display: flex; }
+    .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,0.98); padding: 1.5rem; gap: 1.2rem; }
+    .dropdown-menu { position: static; transform: none; border: none; background: transparent; padding: 0.3rem 0 0 1rem; min-width: auto; }
+    .dropdown-menu li a { padding: 0.3rem 0; }
+    .footer-content { grid-template-columns: 1fr; }
+    .page-banner { height: 45vh; }
+}
+
+html { scroll-behavior: smooth; }
