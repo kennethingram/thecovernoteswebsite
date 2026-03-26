@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Covernotes | Live Cover Band Oakville</title>
+    <meta name="description" content="Meet The Covernotes, a 4-piece live cover band based in Oakville, Ontario, with hundreds of performances across Canada and beyond. Available for weddings, corporate events and private parties.">
+    <meta name="keywords" content="The Covernotes band, cover band Oakville, live band Ontario, about The Covernotes, Oakville cover band">
+    <link rel="canonical" href="https://www.thecovernotes.ca/about.html">
+
+    <meta property="og:title" content="About The Covernotes | Live Cover Band Oakville">
+    <meta property="og:description" content="Meet The Covernotes, a 4-piece live cover band based in Oakville, Ontario, with hundreds of performances across Canada and beyond.">
+    <meta property="og:image" content="https://www.thecovernotes.ca/images/covernoteslogo.jpeg">
+    <meta property="og:url" content="https://www.thecovernotes.ca/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Covernotes">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About The Covernotes | Live Cover Band Oakville">
+    <meta name="twitter:description" content="Meet The Covernotes, a 4-piece live cover band based in Oakville, Ontario, with hundreds of performances across Canada and beyond.">
+    <meta name="twitter:image" content="https://www.thecovernotes.ca/images/covernoteslogo.jpeg">
+
+    <link rel="icon" type="image/jpeg" href="images/covernoteslogo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --primary: #000000; --secondary: #ffffff; --accent: #ff3366; --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg-gradient); color: var(--secondary); line-height: 1.5; overflow-x: hidden; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.8rem; }
+        .logo-icon { width: 35px; height: 35px; object-fit: cover; border-radius: 100%; display: block; }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 300; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .mobile-menu span { width: 25px; height: 2px; background: var(--secondary); transition: 0.3s; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { cursor: pointer; user-select: none; }
+        .dropdown-menu { display: none; position: absolute; top: calc(100% + 0.8rem); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.98); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 0.5rem 0; min-width: 180px; list-style: none; z-index: 1001; }
+        .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-menu li a { display: block; padding: 0.6rem 1.4rem; white-space: nowrap; font-size: 0.9rem; }
+        .page-banner { position: relative; height: 55vh; min-height: 320px; overflow: hidden; margin-top: 57px; }
+        .page-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .page-banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+        .page-banner-overlay h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 5.5rem); letter-spacing: 6px; color: var(--secondary); text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
+        .page-banner-overlay p { font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 300; letter-spacing: 2px; color: rgba(255,255,255,0.9); margin-top: 0.8rem; }
+        .section-divider { max-width: 1400px; margin: 0 auto; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent); }
+        section { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
+        section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 4px; margin-bottom: 1.5rem; text-align: center; }
+        .page-content { max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.05rem; font-weight: 300; line-height: 1.75; }
+        .page-content p { margin-bottom: 1.4rem; }
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .highlight-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.5rem; text-align: center; }
+        .highlight-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 0.5rem; }
+        .highlight-card p { font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.85); }
+        .cta-section { text-align: center; padding: 3rem 2rem; }
+        .cta-section p { font-size: 1.1rem; font-weight: 300; margin-bottom: 2rem; color: rgba(255,255,255,0.85); }
+        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .cta-button { display: inline-block; padding: 0.9rem 2.5rem; background: var(--accent); color: var(--secondary); text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-radius: 4px; transition: all 0.3s ease; }
+        .cta-button:hover { background: #ff1a4d; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,51,102,0.25); }
+        footer { background: rgba(0,0,0,0.95); padding: 2.5rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-content { max-width: 1400px; margin: 0 auto 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .footer-section { text-align: center; }
+        .footer-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 0.8rem; color: var(--accent); }
+        .footer-section p, .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; line-height: 1.6; }
+        .footer-section a:hover { color: var(--accent); }
+        .footer-social { display: flex; gap: 0.8rem; margin-top: 0.8rem; justify-content: center; }
+        .footer-social a { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; color: var(--secondary); transition: all 0.3s ease; }
+        .footer-social a svg { fill: currentColor; }
+        .footer-social a:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,0.98); padding: 1.5rem; gap: 1.2rem; }
+            .dropdown-menu { position: static; transform: none; border: none; background: transparent; padding: 0.3rem 0 0 1rem; min-width: auto; }
+            .dropdown-menu li a { padding: 0.3rem 0; }
+            .footer-content { grid-template-columns: 1fr; }
+            .page-banner { height: 45vh; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/covernoteslogo.jpeg" alt="The Covernotes Logo" class="logo-icon">
+                <span>THE COVERNOTES</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="weddings.html">Weddings</a></li>
+                        <li><a href="corporate.html">Corporate Events</a></li>
+                        <li><a href="parties.html">Private Parties</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#showreels">Showreels</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#setlist">Set List</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <img src="images/hero4.jpeg" alt="The Covernotes live cover band performing on stage" loading="eager">
+        <div class="page-banner-overlay">
+            <h1>ABOUT THE COVERNOTES</h1>
+            <p>Ontario's live party and events band</p>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <section>
+        <div class="page-content">
+            <h2>WHO WE ARE</h2>
+            <p>The Covernotes are a 4-piece live cover band based in Oakville, Ontario. With hundreds of performances across Canada and beyond, we bring experience, professionalism and genuine love for live music to every event we play.</p>
+            <p>We play everything from classics to current floor-fillers. Pop, classic rock, motown, soul, R&amp;B, latin, reggae and hip hop — our set list covers every mood and decade and we tailor every performance to the event and the crowd in front of us.</p>
+            <p>We are multi-instrumentalists and vocalists with professional experience performing at venues of all sizes, from intimate private parties to large outdoor festivals with audiences of over a thousand people. We pride ourselves on reliability, punctuality and giving 100% every time.</p>
+            <p>We're fun and flexible with a professional attitude. Easy to communicate with in the lead-up to your event and focused on making the night everything you want it to be.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section>
+        <h2>WHAT SETS US APART</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <h3>Experience</h3>
+                <p>Hundreds of performances across Canada and internationally. We've played weddings, corporate events, outdoor festivals, rooftop parties, street parties and everything in between.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Versatility</h3>
+                <p>100+ songs spanning multiple genres and decades. We read the room and adapt our set in real time to keep the energy exactly where it needs to be.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Professionalism</h3>
+                <p>We show up on time, set up efficiently and communicate clearly from first enquiry through to the last song. No drama, no fuss.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Fully Self-Contained</h3>
+                <p>We bring our own professional PA system and equipment. No need to source a separate sound company or coordinate with third parties on your behalf.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Personal Touch</h3>
+                <p>We take song requests seriously and love making events personal. Whether it's a first dance, a special dedication or a must-play track, we'll make it happen.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>GTA Based</h3>
+                <p>Based in Oakville and available across Toronto, Mississauga, Burlington, Hamilton and the wider GTA. We also travel across Ontario for the right event.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section>
+        <div class="page-content">
+            <h2>EVENTS WE PLAY</h2>
+            <p>We specialise in weddings, corporate events and private parties but our experience spans a much wider range of occasions. We've performed at street parties, outdoor festivals, fundraising galas, community events, rooftop parties, birthday celebrations, anniversaries, holiday parties and more.</p>
+            <p>Whatever the event, the same commitment applies: turn up, perform brilliantly and make sure your guests have a night they won't forget.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="cta-section">
+        <h2>WANT TO KNOW MORE?</h2>
+        <p>Browse our set list, watch our showreels or get in touch to check availability for your event.</p>
+        <div class="cta-buttons">
+            <a href="index.html#contact" class="cta-button">Book Us Now</a>
+            <a href="index.html#setlist" class="cta-button" style="background: transparent; border: 2px solid var(--accent);">View Set List</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Covernotes</h3>
+                <p>Ontario's premier live party and events band</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><a href="mailto:ken@thecovernotes.ca">Email: ken@thecovernotes.ca</a></p>
+                <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="http://www.instagram.com/the_covernotes" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="http://www.facebook.com/thecovernotes" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Covernotes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+        });
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        if (dropdownToggle) {
+            const dropdown = dropdownToggle.closest('.dropdown');
+            dropdownToggle.addEventListener('click', (e) => { e.preventDefault(); dropdown.classList.toggle('open'); });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) dropdown.classList.remove('open'); });
+            mobileMenu.addEventListener('click', () => { dropdown.classList.remove('open'); });
+        }
+    </script>
+</body>
+</html>

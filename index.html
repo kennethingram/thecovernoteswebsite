@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Covernotes | Live Party and Events Cover Band | Ontario, Canada</title>
-    <meta name="description" content="Book The Covernotes - Ontario's premier live cover band for weddings, corporate events, parties and functions. Professional musicians delivering unforgettable performances across the GTA and beyond. Call (365) 779-0323">
+    <title>The Covernotes | Wedding &amp; Party Cover Band | Toronto, Oakville, GTA</title>
+    <meta name="description" content="The Covernotes are a 4-piece live cover band in Oakville, Ontario. Book us for weddings, corporate events, and parties across the GTA. Call (365) 779-0323.">
     <meta name="keywords" content="wedding band Ontario, corporate event band, party band GTA, live music Toronto, cover band Ontario, function band, event entertainment, wedding entertainment Toronto, live band Oakville, party music Ontario">
     <meta name="author" content="The Covernotes">
     <link rel="canonical" href="https://www.thecovernotes.ca/">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="The Covernotes | Live Party and Events Cover Band | Ontario, Canada">
-    <meta property="og:description" content="Book Ontario's premier live cover band for weddings, corporate events, parties and functions. Professional entertainment that will make your event unforgettable.">
+    <meta property="og:title" content="The Covernotes | Wedding &amp; Party Cover Band | Toronto, Oakville, GTA">
+    <meta property="og:description" content="The Covernotes are a 4-piece live cover band in Oakville, Ontario. Book us for weddings, corporate events, and parties across the GTA. Call (365) 779-0323.">
     <meta property="og:image" content="https://www.thecovernotes.ca/images/covernoteslogo.jpeg">
     <meta property="og:url" content="https://www.thecovernotes.ca">
     <meta property="og:type" content="website">
@@ -19,8 +19,8 @@
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Covernotes | Live Party and Events Cover Band">
-    <meta name="twitter:description" content="Book Ontario's premier live cover band for weddings, corporate events, and parties.">
+    <meta name="twitter:title" content="The Covernotes | Wedding &amp; Party Cover Band | Toronto, Oakville, GTA">
+    <meta name="twitter:description" content="The Covernotes are a 4-piece live cover band in Oakville, Ontario. Book us for weddings, corporate events, and parties across the GTA. Call (365) 779-0323.">
     <meta name="twitter:image" content="https://www.thecovernotes.ca/images/covernoteslogo.jpeg">
     
     <!-- Structured Data / Schema.org Markup -->
@@ -76,6 +76,36 @@
       "offers": {
         "@type": "Offer",
         "description": "Live music entertainment for weddings, corporate events, and private parties"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Live Music Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wedding Band",
+              "description": "Live cover band for wedding receptions and ceremonies across Toronto, Oakville, and the GTA"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Corporate Event Band",
+              "description": "Professional live music for corporate events, Christmas parties, and company functions in the GTA"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Private Party Band",
+              "description": "Energetic live cover band for birthday parties, private functions, and special celebrations"
+            }
+          }
+        ]
       }
     }
     </script>
@@ -899,7 +929,43 @@
         html {
             scroll-behavior: smooth;
         }
-       
+
+        /* Services dropdown */
+        .dropdown { position: relative; }
+        .dropdown-toggle { cursor: pointer; user-select: none; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.8rem);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            min-width: 180px;
+            list-style: none;
+            z-index: 1001;
+        }
+        .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.6rem 1.4rem;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                border: none;
+                background: transparent;
+                padding: 0.3rem 0 0 1rem;
+                min-width: auto;
+            }
+            .dropdown-menu li a { padding: 0.3rem 0; }
+        }
+
     </style>
 </head>
 <body>
@@ -913,6 +979,14 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="weddings.html">Weddings</a></li>
+                        <li><a href="corporate.html">Corporate Events</a></li>
+                        <li><a href="parties.html">Private Parties</a></li>
+                    </ul>
+                </li>
                 <li><a href="#showreels">Showreels</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#reviews">Reviews</a></li>
@@ -971,7 +1045,7 @@
             <p>We are fun and flexible with a professional attitude. We are all experienced in performing live having played hundreds of gigs across numerous countries and venues.</p>
             <p>We pride ourselves on being reliable performers, multi-instrumentalists and vocalists providing professional and energetic performances of the highest calibre. We are immaculately turned out, friendly, accommodating and enthusiastic, always giving 100%.</p>
             <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; margin-top: 2rem; margin-bottom: 1rem; color: var(--accent);">Professional Live Music for Every Occasion</h3>
-            <p>Serving Toronto, Oakville, Mississauga, Burlington, Hamilton, and throughout the Greater Toronto Area, we specialize in weddings, corporate events, private parties, and special functions. Whether you're planning an intimate gathering or a large celebration, The Covernotes delivers exceptional live entertainment tailored to your event.</p>
+            <p>Based in Oakville and available across Toronto, Mississauga, Burlington, Hamilton, and the wider GTA, The Covernotes specialise in weddings, corporate events, private parties, and special functions. Whether you need a wedding band in Toronto or a party band for a corporate night in Oakville, we deliver exceptional live entertainment tailored to your event.</p>
             <div class="about-cta">
                 <a href="#contact" class="cta-button">Book Us Now</a>
                 <a href="#setlist" class="cta-button">View Set List</a>
@@ -1197,8 +1271,8 @@
     <section id="setlist">
         <h2>SET LIST</h2>
         <div class="setlist-intro">
-            <p>We are very experienced managing the set both live or can tailor our set to your event, including specific songs requests you have.</p>
-            <p style="margin-top: 1.5rem;">On average a set of 1 hour would cover 16-19 songs. Example set times as standard cover 3 hours on site and we are flexible with no fuss in the arrangements. We can include background ipod or mp3 music during breaks as standard.</p>
+            <p>With 100+ songs spanning pop, classic rock, motown, soul, R&amp;B, latin, reggae, and hip hop, our set list covers every mood and decade. We tailor every performance to your event — whether it's a wedding reception, corporate dinner, or birthday party — and happily take requests to make the night truly yours.</p>
+            <p style="margin-top: 1.5rem;">On average a set of 1 hour covers 16–19 songs. Our standard package includes 3 hours on stage, and we're flexible with timing. We can also provide background music during breaks at no extra charge.</p>
         </div>
        
         <!-- Pop Hits -->
@@ -1559,6 +1633,24 @@
                 navLinks.classList.remove('active');
             });
         });
+
+        // Services dropdown
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        if (dropdownToggle) {
+            const dropdown = dropdownToggle.closest('.dropdown');
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+            mobileMenu.addEventListener('click', () => {
+                dropdown.classList.remove('open');
+            });
+        }
        
         // Hero Carousel - 3s change + 3s zoom to 10%
         let currentSlide = 0;
