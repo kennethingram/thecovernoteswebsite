@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews &amp; Testimonials | The Covernotes</title>
+    <meta name="description" content="Read reviews from real clients who booked The Covernotes for weddings, corporate events and private parties across Ontario.">
+    <meta name="keywords" content="The Covernotes reviews, cover band testimonials Ontario, wedding band reviews Toronto, corporate band reviews GTA">
+    <link rel="canonical" href="https://www.thecovernotes.ca/testimonials.html">
+
+    <meta property="og:title" content="Reviews &amp; Testimonials | The Covernotes">
+    <meta property="og:description" content="Read reviews from real clients who booked The Covernotes for weddings, corporate events and private parties across Ontario.">
+    <meta property="og:image" content="https://www.thecovernotes.ca/images/covernoteslogo.jpeg">
+    <meta property="og:url" content="https://www.thecovernotes.ca/testimonials.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Covernotes">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Reviews &amp; Testimonials | The Covernotes">
+    <meta name="twitter:description" content="Read reviews from real clients who booked The Covernotes for weddings, corporate events and private parties across Ontario.">
+    <meta name="twitter:image" content="https://www.thecovernotes.ca/images/covernoteslogo.jpeg">
+
+    <link rel="icon" type="image/jpeg" href="images/covernoteslogo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --primary: #000000; --secondary: #ffffff; --accent: #ff3366; --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg-gradient); color: var(--secondary); line-height: 1.5; overflow-x: hidden; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.8rem; }
+        .logo-icon { width: 35px; height: 35px; object-fit: cover; border-radius: 100%; display: block; }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 300; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .mobile-menu span { width: 25px; height: 2px; background: var(--secondary); transition: 0.3s; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { cursor: pointer; user-select: none; }
+        .dropdown-menu { display: none; position: absolute; top: calc(100% + 0.8rem); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.98); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 0.5rem 0; min-width: 180px; list-style: none; z-index: 1001; }
+        .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-menu li a { display: block; padding: 0.6rem 1.4rem; white-space: nowrap; font-size: 0.9rem; }
+        .page-header { padding: 6rem 2rem 3rem; text-align: center; max-width: 1400px; margin: 0 auto; }
+        .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: 6px; }
+        .page-header p { font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-top: 0.8rem; }
+        .section-divider { max-width: 1400px; margin: 0 auto; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent); }
+        section { padding: 2.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+        section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: 4px; margin-bottom: 1.5rem; text-align: center; color: var(--accent); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .review-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem; }
+        .review-stars { font-size: 1.2rem; color: #ffd700; margin-bottom: 0.8rem; letter-spacing: 0.2rem; }
+        .review-text { font-size: 0.95rem; font-style: italic; line-height: 1.7; margin-bottom: 1rem; color: rgba(255,255,255,0.9); }
+        .review-author { font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+        .cta-section { text-align: center; padding: 3rem 2rem; }
+        .cta-section p { font-size: 1.1rem; font-weight: 300; margin-bottom: 2rem; color: rgba(255,255,255,0.85); }
+        .cta-button { display: inline-block; padding: 0.9rem 2.5rem; background: var(--accent); color: var(--secondary); text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-radius: 4px; transition: all 0.3s ease; }
+        .cta-button:hover { background: #ff1a4d; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,51,102,0.25); }
+        footer { background: rgba(0,0,0,0.95); padding: 2.5rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-content { max-width: 1400px; margin: 0 auto 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .footer-section { text-align: center; }
+        .footer-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 0.8rem; color: var(--accent); }
+        .footer-section p, .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; line-height: 1.6; }
+        .footer-section a:hover { color: var(--accent); }
+        .footer-social { display: flex; gap: 0.8rem; margin-top: 0.8rem; justify-content: center; }
+        .footer-social a { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; color: var(--secondary); transition: all 0.3s ease; }
+        .footer-social a svg { fill: currentColor; }
+        .footer-social a:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,0.98); padding: 1.5rem; gap: 1.2rem; }
+            .dropdown-menu { position: static; transform: none; border: none; background: transparent; padding: 0.3rem 0 0 1rem; min-width: auto; }
+            .dropdown-menu li a { padding: 0.3rem 0; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/covernoteslogo.jpeg" alt="The Covernotes Logo" class="logo-icon">
+                <span>THE COVERNOTES</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="weddings.html">Weddings</a></li>
+                        <li><a href="corporate.html">Corporate Events</a></li>
+                        <li><a href="parties.html">Private Parties</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#showreels">Showreels</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#setlist">Set List</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>REVIEWS</h1>
+        <p>What our clients say about The Covernotes</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <section>
+        <h2>Weddings &amp; Anniversaries</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"The Covernotes absolutely made our wedding! They kept everyone dancing all night long and really knew how to read the crowd. Professional, talented and so much fun. Highly recommend!"</div>
+                <div class="review-author">Sarah &amp; Mike, Wedding 2024</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"The Covernotes completely exceeded our expectations. Every single one of our guests commented on how incredible the band was. Worth every cent!"</div>
+                <div class="review-author">Noor and Harman, Wedding Reception</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"What an experience! If you want a band that will make your event unforgettable, book The Covernotes! They had our guests raving for weeks. Absolutely incredible performance!"</div>
+                <div class="review-author">Alexandra I., Wedding Reception</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Great band and super bunch of guys. We booked the Covernotes for our 25th anniversary party. Great music and good cross section of tunes that appealed to the entire crowd. On time, professional and amazing sound. Highly recommended. Made the event special!"</div>
+                <div class="review-author">Kelly H., 25th Wedding Anniversary 2024</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Absolutely phenomenal! The band had our entire party dancing from start to finish. Professional setup, great communication and outstanding performance."</div>
+                <div class="review-author">Lisa M., Anniversary Party 2024</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section>
+        <h2>Corporate Events</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"We hired The Covernotes for our company holiday party and they were fantastic. Great energy, amazing song selection and they had everyone from the CEO to the interns on the dance floor!"</div>
+                <div class="review-author">Simran K., Corporate Event 2024</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"We couldn't be happier with the band we hired for our corporate event! The sound quality and vocal performance were outstanding, truly elevating the atmosphere of the evening. We were impressed with their punctuality, professionalism and repertoire versatility. We would absolutely hire them again for future events and highly recommend them to anyone looking for exceptional live music."</div>
+                <div class="review-author">Max G., Corporate Event 2024</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Terrific band! We were very impressed with The Covernotes! They went above our expectations and were a hit with the audience. We hired The Covernotes for our rooftop resident event. The Covernotes were easy to work with and were open to our requests. 10/5 Stars!"</div>
+                <div class="review-author">Katie M., Roof Top Corporate Party 2025</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Ken and the Covernotes were amazing! We hosted a corporate winter event and they left a great impression with our guests. Ken was super to work with and very accommodating! As someone who doesn't typically do events on a day-to-day basis, I would highly recommend the Covernotes, you won't regret it."</div>
+                <div class="review-author">Badan F., Corporate Party 2024</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"The Covernotes were an absolute hit at our Margaritaville night on the patio. They sounded incredible, kept the energy up and had us dancing all evening. Their set up looked great and they were a pleasure to work with."</div>
+                <div class="review-author">Martin S., Toronto Badminton and Racquet Club Party 2025</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"From classic rock to current hits, they played it all! The Covernotes were the highlight of our event. Professional, punctual and incredibly talented musicians."</div>
+                <div class="review-author">Lillian B., Fundraising Gala 2024</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section>
+        <h2>Parties &amp; Celebrations</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"This is the band you want. These guys were amazing!!! It was easy to communicate with Ken leading up to the event. They were punctual, professional and truly read the crowd. We hired the Covernotes for a 40th birthday house party and had everyone comment on how great they were. Thank you for making this birthday a memorable one."</div>
+                <div class="review-author">Kristin M., 40th Birthday Party 2025</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Excellent Experience. The Covernotes were a great addition to our annual street party. Ken was great with communication ahead of the event. The performance was excellent, playing all types of tunes to appeal to an all ages audience. Very positive experience, plan to have them again next year!"</div>
+                <div class="review-author">Heather P., Street Party 2025</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"The Covernotes were amazing, from start to finish. Arranging logistics couldn't have gone smoother with their incredible knowledge of what they needed from us in order to ensure their best performance for our community. Everyone loved their performance and eclectic music selections. Over 1000 people in our community had the pleasure of being entertained by them and we look forward to working with them again."</div>
+                <div class="review-author">Shabana P., Halloween in the Park 2023</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Covernotes was exceptional during our birthday party and our guests were all impressed by the level of the performance! Very good communication from Ken who organised perfectly for that night. We will definitely recommend them to other people who are looking for a different experience at their events. 5 stars!"</div>
+                <div class="review-author">Negar G., 40th Birthday Party 2025</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Best party band we've ever had! The Covernotes brought incredible energy to our event. They're professional, accommodating and their music selection is perfect for all ages."</div>
+                <div class="review-author">Jennifer L., 50th Birthday Party</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"Amazing. The Covernotes were professional and surpassed our expectations. We highly recommend them for your next event!"</div>
+                <div class="review-author">Amy K., Birthday Party 2025</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="review-text">"The Covernotes brought the perfect vibe to our outdoor summer event. They're versatile, talented and really know how to entertain a crowd. Would book again in a heartbeat!"</div>
+                <div class="review-author">Mark &amp; Rachel, Summer Festival</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="cta-section">
+        <h2>READY TO BOOK?</h2>
+        <p>Get in touch with your event details and we'll come back with availability and a tailored quote.</p>
+        <a href="index.html#contact" class="cta-button">Book Us Now</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Covernotes</h3>
+                <p>Ontario's premier live party and events band</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><a href="mailto:ken@thecovernotes.ca">Email: ken@thecovernotes.ca</a></p>
+                <p>Phone: <a href="tel:+13657790323">(365) 779-0323</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="http://www.instagram.com/the_covernotes" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="http://www.facebook.com/thecovernotes" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Covernotes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+        });
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        if (dropdownToggle) {
+            const dropdown = dropdownToggle.closest('.dropdown');
+            dropdownToggle.addEventListener('click', (e) => { e.preventDefault(); dropdown.classList.toggle('open'); });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) dropdown.classList.remove('open'); });
+            mobileMenu.addEventListener('click', () => { dropdown.classList.remove('open'); });
+        }
+    </script>
+</body>
+</html>
