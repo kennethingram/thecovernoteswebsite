@@ -413,7 +413,18 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            aspect-ratio: 1;
+            aspect-ratio: 1 / 1;
+            min-width: 0;
+            min-height: 0;
+        }
+
+        /* Fallback for older Safari without aspect-ratio support */
+        @supports not (aspect-ratio: 1 / 1) {
+            .gallery-item-wrapper::after {
+                content: '';
+                display: block;
+                padding-top: 100%;
+            }
         }
        
         .gallery-item-wrapper:hover {
@@ -439,6 +450,8 @@
         }
        
         .gallery-item {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
