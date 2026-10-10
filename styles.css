@@ -53,6 +53,7 @@ section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 
 .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.5rem; text-align: center; }
 .feature-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 0.6rem; }
 .feature-card p { font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.85); }
+.page-content a, .feature-card a { color: var(--accent); }
 
 /* Highlights grid (about) */
 .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
