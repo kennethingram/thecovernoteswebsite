@@ -4,8 +4,19 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://www.thecovernotes.ca/sitemap.xml
+# AI search and assistant crawlers are welcome, so ChatGPT, Claude,
+# Perplexity, Gemini and Copilot can recommend the band
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
 
-# Crawl-delay (optional, helps prevent server overload)
-Crawl-delay: 1
+Sitemap: https://www.thecovernotes.ca/sitemap.xml
